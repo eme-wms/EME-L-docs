@@ -1,0 +1,58 @@
+---
+title: "EME-L — Документация"
+template: splash
+hero:
+  tagline: "Документация языка программирования EME-L и системы управления складом EME.WMS"
+  actions:
+    - text: "Начать изучение"
+      link: "/language/basics/syntax/"
+      icon: "right-arrow"
+      variant: "primary"
+    - text: "Архитектура"
+      link: "/architecture/wms-theory/"
+      icon: "right-arrow"
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+## Быстрый доступ
+
+<CardGrid>
+  <Card title="Язык EME-L" icon="book">
+    Синтаксис, типы данных, классы, события, константы и IS-функции
+    языка программирования EME-L.
+    
+    [Синтаксис →](/language/basics/syntax/) · [Классы →](/language/basics/classes/) · [События →](/language/basics/events/)
+  </Card>
+  <Card title="Данные и SQL" icon="database">
+    Работа с базой данных, запросы, записи, поля, транзакции
+    и расширенный EME-SQL.
+    
+    [База данных →](/language/data/database/) · [EME-SQL →](/language/data/eme-sql/) · [Память →](/language/data/memory/)
+  </Card>
+  <Card title="Интеграция" icon="plug">
+    Интеграция с 1С ERP, PostgreSQL, web-сервисы, SOAP и JSON API.
+    
+    [1С ERP →](/integration/erp-1c/) · [Web-сервисы →](/integration/web-services/) · [PostgreSQL →](/integration/postgresql-odbc/)
+  </Card>
+  <Card title="Развёртывание" icon="server">
+    Релизы, тестовые среды, инсталляторы, обновления и архивация.
+    
+    [Релиз →](/deployment/release/) · [Тестовая среда →](/deployment/test-environment/) · [Обновления →](/deployment/updates/)
+  </Card>
+</CardGrid>
+
+## О EME-L
+
+**EME-L** — язык программирования, разработанный для платформы EME.WMS (Warehouse Management System). 
+Язык используется для автоматизации складских операций, интеграции с ERP-системами, 
+создания отчётов и управления бизнес-логикой склада.
+
+### Основные возможности
+
+- **Типизированные переменные** — Integer, Real, String, DateTime и другие типы данных
+- **Объектная модель** — создание классов, компонентов, наследование и полиморфизм
+- **Встроенная работа с БД** — запросы, транзакции, записи и поля
+- **EME-SQL** — расширенный SQL диалект с поддержкой SELECT, JOIN, UNION, TOTAL
+- **HTTP интеграция** — взаимодействие с внешними сервисами и TSD устройствами
+- **Отчёты** — генерация печатных форм, редактируемые отчёты, бэнды

@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm view *)",
+      "WebSearch",
+      "Bash(cd /tmp)",
+      "Bash(npm pack *)",
+      "Bash(tar -tf surrealdb-ui-1.0.101.tgz)",
+      "Bash(tar -tf /tmp/surrealdb-ui-1.0.101.tgz)",
+      "Bash(grep -E \"\\\\.\\(js|ts|d\\\\.ts|mjs\\)$\")",
+      "Bash(tar -xzf surrealdb-ui-1.0.101.tgz package/dist/ui.d.ts)",
+      "Bash(tar -xzf surrealdb-ui-1.0.101.tgz package/dist/ui.js)",
+      "Bash(grep -oP 'colors:\\\\{[^}]{0,5000}' /tmp/package/dist/ui.js)",
+      "Bash(grep -oP 'colors:\\\\s*\\\\{[^}]{1,10000}' /tmp/package/dist/ui.js)",
+      "Bash(grep -oP 'createTheme\\\\\\([^\\)]{1,5000}' /tmp/package/dist/ui.js)",
+      "Bash(grep -oP '.{0,200}obsidian.{0,200}' /tmp/package/dist/ui.js)",
+      "Bash(dd *)",
+      "Bash(tar -tf mantine-core-8.3.17.tgz)",
+      "Bash(tar -xzf mantine-core-8.3.17.tgz package/cjs/core/MantineProvider/default-colors.cjs)",
+      "Bash(tar -xzf mantine-core-8.3.17.tgz \"package/esm/core/MantineProvider/default-colors.mjs\")",
+      "Bash(tar -xzf mantine-core-8.3.17.tgz)",
+      "Bash(mkdir -p mantine-extract)",
+      "Bash(tar -xzf mantine-core-8.3.17.tgz -C mantine-extract/)",
+      "Read(//tmp/**)",
+      "Bash(tar -tf /tmp/mantine-core-8.3.17.tgz)",
+      "Bash(tar *)",
+      "Bash(grep -oP '.{0,100}surreal.?[Pp]ink.{0,100}' /tmp/package/dist/ui.js)",
+      "Bash(git init *)",
+      "Bash(git config *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git branch *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Read(//d/.ssh/**)",
+      "Bash(icacls *)",
+      "PowerShell(icacls *)",
+      "Bash(git reset *)"
+    ]
+  }
+}

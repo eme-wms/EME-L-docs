@@ -1,0 +1,400 @@
+/* ============================================================
+   EME.WMS Documentation — SurrealDB-inspired Dark Theme
+   Green accent replacing SurrealDB's violet.
+   Starlight convention: :root = dark base, [data-theme='light'] = light
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ====================== DARK THEME (Starlight base) ====================== */
+:root,
+::backdrop {
+	/* Obsidian-based gray scale: light (text) → dark (background) */
+	--sl-color-white: #F5F6F7;
+	--sl-color-gray-1: #E7E9ED;
+	--sl-color-gray-2: #DCDFE4;
+	--sl-color-gray-3: #9AA1AB;
+	--sl-color-gray-4: #848B95;
+	--sl-color-gray-5: #595466;
+	--sl-color-gray-6: #3D3948;
+	--sl-color-gray-7: #201D29;
+	--sl-color-black: #0E0C14;
+
+	/* Green accent (replacing SurrealDB violet) */
+	--sl-color-accent-low: #0d3320;
+	--sl-color-accent: #40c057;
+	--sl-color-accent-high: #69db7c;
+
+	/* Semantic mappings */
+	--sl-color-text: var(--sl-color-gray-2);
+	--sl-color-text-accent: var(--sl-color-accent-high);
+	--sl-color-text-invert: var(--sl-color-accent-low);
+	--sl-color-bg: var(--sl-color-black);
+	--sl-color-bg-nav: var(--sl-color-black);
+	--sl-color-bg-sidebar: var(--sl-color-black);
+	--sl-color-bg-inline-code: var(--sl-color-gray-7);
+	--sl-color-bg-accent: var(--sl-color-accent-high);
+	--sl-color-hairline-light: var(--sl-color-gray-5);
+	--sl-color-hairline: var(--sl-color-gray-6);
+	--sl-color-hairline-shade: var(--sl-color-gray-7);
+
+	--sl-font: 'Manrope', system-ui, -apple-system, sans-serif;
+	--sl-font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+	--sl-radius: 8px;
+	--sl-content-width: 52rem;
+	--sl-sidebar-width: 18rem;
+
+	--eme-green: #40c057;
+	--eme-green-dark: #2f9e44;
+	--eme-green-light: #69db7c;
+	--eme-green-glow: rgba(64, 192, 87, 0.10);
+	--eme-green-subtle: rgba(64, 192, 87, 0.05);
+}
+
+/* ====================== LIGHT THEME ====================== */
+:root[data-theme='light'],
+[data-theme='light'] ::backdrop {
+	/* Inverted gray scale: dark (text) → light (background) */
+	--sl-color-white: #0C0F14;
+	--sl-color-gray-1: #1D2229;
+	--sl-color-gray-2: #393F48;
+	--sl-color-gray-3: #495057;
+	--sl-color-gray-4: #868e96;
+	--sl-color-gray-5: #ced4da;
+	--sl-color-gray-6: #dee2e6;
+	--sl-color-gray-7: #f1f3f5;
+	--sl-color-black: #ffffff;
+
+	/* Green accent (darker shades for light mode) */
+	--sl-color-accent-low: #d3f9d8;
+	--sl-color-accent: #2f9e44;
+	--sl-color-accent-high: #2b8a3e;
+
+	--sl-color-text-accent: var(--sl-color-accent);
+	--sl-color-text-invert: var(--sl-color-black);
+	--sl-color-bg: var(--sl-color-black);
+	--sl-color-bg-nav: #f8f9fa;
+	--sl-color-bg-sidebar: #f8f9fa;
+	--sl-color-bg-inline-code: var(--sl-color-gray-6);
+	--sl-color-bg-accent: var(--sl-color-accent);
+	--sl-color-hairline-light: var(--sl-color-gray-6);
+	--sl-color-hairline-shade: var(--sl-color-gray-6);
+
+	--eme-green: #2f9e44;
+	--eme-green-dark: #2b8a3e;
+	--eme-green-light: #d3f9d8;
+	--eme-green-glow: rgba(47, 158, 68, 0.10);
+	--eme-green-subtle: rgba(47, 158, 68, 0.05);
+}
+
+/* ====================== GLOBAL ====================== */
+
+body {
+	font-family: var(--sl-font);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* ====================== MARKDOWN CONTENT ====================== */
+
+.sl-markdown-content {
+	line-height: 1.8;
+}
+
+.sl-markdown-content h1 {
+	font-weight: 800;
+	letter-spacing: -0.03em;
+	border-bottom: 1px solid var(--sl-color-gray-6);
+	padding-bottom: 0.5rem;
+}
+
+.sl-markdown-content h2 {
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	margin-top: 2.5rem;
+	padding-bottom: 0.35rem;
+	border-bottom: 1px solid var(--sl-color-gray-7);
+}
+
+.sl-markdown-content h3 {
+	font-weight: 700;
+}
+
+.sl-markdown-content h4 {
+	font-weight: 600;
+	color: var(--sl-color-gray-3);
+}
+
+/* Links */
+.sl-markdown-content a {
+	color: var(--eme-green);
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+	transition: border-color 0.15s ease, color 0.15s ease;
+	font-weight: 500;
+}
+
+.sl-markdown-content a:hover {
+	border-bottom-color: var(--eme-green);
+	color: var(--eme-green-light);
+}
+
+/* Inline code */
+.sl-markdown-content code {
+	font-family: var(--sl-font-mono);
+	font-size: 0.875em;
+	background: var(--eme-green-subtle);
+	border: 1px solid var(--sl-color-gray-6);
+	border-radius: 6px;
+	padding: 0.15em 0.4em;
+}
+
+/* Code blocks */
+.sl-markdown-content pre {
+	border-radius: var(--sl-radius);
+	border: 1px solid var(--sl-color-gray-6);
+}
+
+.sl-markdown-content pre code {
+	background: transparent !important;
+	border: none !important;
+	padding: 0;
+	font-size: 0.85rem;
+	line-height: 1.7;
+}
+
+/* Tables */
+.sl-markdown-content table {
+	border-collapse: collapse;
+	width: 100%;
+	border-radius: var(--sl-radius);
+	overflow: hidden;
+}
+
+.sl-markdown-content thead {
+	background: var(--sl-color-gray-7);
+}
+
+.sl-markdown-content thead th {
+	font-weight: 700;
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	padding: 0.75rem 1rem;
+	border-bottom: 2px solid var(--eme-green);
+}
+
+.sl-markdown-content tbody td {
+	padding: 0.65rem 1rem;
+	border-bottom: 1px solid var(--sl-color-gray-6);
+}
+
+.sl-markdown-content tbody tr {
+	transition: background 0.15s ease;
+}
+
+.sl-markdown-content tbody tr:hover {
+	background: var(--eme-green-glow);
+}
+
+/* Blockquotes */
+.sl-markdown-content blockquote {
+	border-left: 3px solid var(--eme-green);
+	background: var(--eme-green-subtle);
+	border-radius: 0 var(--sl-radius) var(--sl-radius) 0;
+	padding: 1rem 1.25rem;
+	margin: 1.5rem 0;
+}
+
+/* Lists */
+.sl-markdown-content ul li::marker {
+	color: var(--eme-green);
+}
+
+.sl-markdown-content ol li::marker {
+	color: var(--eme-green-dark);
+	font-weight: 600;
+}
+
+/* Horizontal rule */
+.sl-markdown-content hr {
+	border: none;
+	height: 1px;
+	background: var(--sl-color-gray-6);
+	margin: 2rem 0;
+}
+
+/* Details */
+.sl-markdown-content details {
+	border: 1px solid var(--sl-color-gray-6);
+	border-radius: var(--sl-radius);
+	padding: 0.75rem 1rem;
+	transition: border-color 0.15s ease;
+}
+
+.sl-markdown-content details:hover {
+	border-color: var(--eme-green);
+}
+
+.sl-markdown-content summary {
+	cursor: pointer;
+	font-weight: 600;
+}
+
+/* ====================== HERO ====================== */
+
+.hero {
+	background: linear-gradient(135deg, #0E0C14 0%, #16141F 30%, #1a3a2a 65%, #2f9e44 100%) !important;
+	color: #F5F6F7;
+	position: relative;
+	overflow: hidden;
+	padding: 4rem 2rem !important;
+	border-radius: 0 0 var(--sl-radius) var(--sl-radius);
+}
+
+.hero::before {
+	content: '';
+	position: absolute;
+	top: -40%;
+	right: -15%;
+	width: 50%;
+	height: 180%;
+	background: radial-gradient(ellipse at center, rgba(64, 192, 87, 0.08) 0%, transparent 70%);
+	pointer-events: none;
+}
+
+.hero::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, var(--eme-green), transparent);
+}
+
+.hero h1 {
+	font-family: var(--sl-font);
+	font-weight: 800;
+	letter-spacing: -0.03em;
+}
+
+.hero .tagline {
+	opacity: 0.9;
+}
+
+.hero .actions a {
+	font-family: var(--sl-font);
+	font-weight: 600;
+	border-radius: var(--sl-radius);
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hero .action.primary,
+.hero .actions a[variant="primary"],
+.hero .actions a.primary {
+	background: var(--eme-green) !important;
+	border-color: var(--eme-green) !important;
+	color: #fff !important;
+	box-shadow: 0 4px 20px rgba(64, 192, 87, 0.25);
+}
+
+.hero .action.primary:hover,
+.hero .actions a.primary:hover {
+	background: var(--eme-green-dark) !important;
+	transform: translateY(-1px);
+	box-shadow: 0 6px 28px rgba(64, 192, 87, 0.35);
+}
+
+/* Light mode hero override */
+[data-theme='light'] .hero {
+	background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 30%, #d3f9d8 65%, #69db7c 100%) !important;
+	color: #1D2229;
+}
+
+[data-theme='light'] .hero::before {
+	background: radial-gradient(ellipse at center, rgba(47, 158, 68, 0.10) 0%, transparent 70%);
+}
+
+[data-theme='light'] .hero .action.primary,
+[data-theme='light'] .hero .actions a[variant="primary"],
+[data-theme='light'] .hero .actions a.primary {
+	color: #fff !important;
+	box-shadow: 0 4px 20px rgba(47, 158, 68, 0.20);
+}
+
+[data-theme='light'] .hero .action.primary:hover,
+[data-theme='light'] .hero .actions a.primary:hover {
+	box-shadow: 0 6px 28px rgba(47, 158, 68, 0.30);
+}
+
+/* ====================== CARDS ====================== */
+
+.card {
+	border: 1px solid var(--sl-color-gray-6);
+	border-radius: var(--sl-radius);
+	transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+	border-color: var(--eme-green);
+	box-shadow: 0 4px 16px var(--eme-green-glow);
+	transform: translateY(-2px);
+}
+
+.card h3,
+.card title {
+	font-family: var(--sl-font);
+	font-weight: 700;
+}
+
+.card img,
+.card svg,
+.card-icon {
+	color: var(--eme-green) !important;
+}
+
+.card a {
+	color: var(--eme-green) !important;
+	font-weight: 500;
+}
+
+.card a:hover {
+	color: var(--eme-green-light) !important;
+}
+
+/* ====================== SCROLLBAR ====================== */
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--sl-color-gray-5);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--eme-green);
+}
+
+/* ====================== SELECTION ====================== */
+
+::selection {
+	background: var(--eme-green-glow);
+}
+
+/* ====================== RESPONSIVE ====================== */
+
+@media (max-width: 768px) {
+	.hero {
+		padding: 2.5rem 1rem !important;
+		border-radius: 0;
+	}
+}
