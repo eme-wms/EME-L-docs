@@ -1,5 +1,5 @@
 ---
-title: "Операции TSD"
+title: "Операции ТСД"
 sidebar:
   order: 1
 ---

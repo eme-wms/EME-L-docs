@@ -83,6 +83,6 @@ result = mapLotRef.Lookup(line);
 
 ## См. также
 
-- [EME_L_Database_Advanced.md](./EME_L_Database_Advanced.md) — дозор базы данных и расширенные операции
-- [EME_SQL_Advanced.md](./EME_SQL_Advanced.md) — программирование SQL-запросов
-- [EME_L_Query_Reports.md](./EME_L_Query_Reports.md) — формирование отчётов
+- [EME_L_Database_Advanced.md](/language/data/database-advanced) — дозор базы данных и расширенные операции
+- [EME_SQL_Advanced.md](/language/data/eme-sql) — программирование SQL-запросов
+- [EME_L_Query_Reports.md](/language/advanced/reports) — формирование отчётов

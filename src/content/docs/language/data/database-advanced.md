@@ -159,5 +159,5 @@ objQuery.LoadLines(r_DocLines);
 
 ## См. также
 
-- [EME_L_Database.md](./EME_L_Database.md) — основные классы данных Query, BitBuffer, Array, Map
-- [EME_SQL_Advanced.md](./EME_SQL_Advanced.md) — SQL-запросы с оператором WITH и фильтрацией
+- [EME_L_Database.md](/language/data/database) — основные классы данных Query, BitBuffer, Array, Map
+- [EME_SQL_Advanced.md](/language/data/eme-sql) — SQL-запросы с оператором WITH и фильтрацией

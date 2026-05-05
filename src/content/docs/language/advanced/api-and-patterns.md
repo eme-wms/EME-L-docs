@@ -218,6 +218,6 @@ RunBot(BotRec AS "ProcessBotClassifier", ContextParams)
 
 ## См. также
 
-- [EME_L_Database.md](./EME_L_Database.md) — классы Query, BitBuffer, Array, Map
-- [EME_L_Advanced_Features.md](./EME_L_Advanced_Features.md) — компоненты и скрытые возможности
-- [EME_L_HTTP_Integration.md](./EME_L_HTTP_Integration.md) — HTTP-интеграция
+- [EME_L_Database.md](/language/data/database) — классы Query, BitBuffer, Array, Map
+- [EME_L_Advanced_Features.md](/language/advanced/components) — компоненты и скрытые возможности
+- [EME_L_HTTP_Integration.md](/language/advanced/http-integration) — HTTP-интеграция

@@ -106,6 +106,6 @@ SendWebRequest(address, Params)
 
 ## См. также
 
-- [EME_L_Advanced_API_and_Patterns.md](./EME_L_Advanced_API_and_Patterns.md) — PropertyTree для JSON-ответов
-- [EME_L_Database_Advanced.md](./EME_L_Database_Advanced.md) — транзакции и дозор БД
-- [EME_SQL_Advanced.md](./EME_SQL_Advanced.md) — SQL-запросы для формирования данных
+- [EME_L_Advanced_API_and_Patterns.md](/language/advanced/api-and-patterns) — PropertyTree для JSON-ответов
+- [EME_L_Database_Advanced.md](/language/data/database-advanced) — транзакции и дозор БД
+- [EME_SQL_Advanced.md](/language/data/eme-sql) — SQL-запросы для формирования данных

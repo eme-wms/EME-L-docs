@@ -283,6 +283,6 @@ is_format(tr("На складе %s включена инвентаризация
 
 ## См. также
 
-- [EME_L_Query_Reports.md](./EME_L_Query_Reports.md) — формирование отчётов
-- [EME_L_Advanced_API_and_Patterns.md](./EME_L_Advanced_API_and_Patterns.md) — классы String, PropertyTree, боты
-- [EME_L_Database.md](./EME_L_Database.md) — структуры данных Query, BitBuffer, Array, Map
+- [EME_L_Query_Reports.md](/language/advanced/reports) — формирование отчётов
+- [EME_L_Advanced_API_and_Patterns.md](/language/advanced/api-and-patterns) — классы String, PropertyTree, боты
+- [EME_L_Database.md](/language/data/database) — структуры данных Query, BitBuffer, Array, Map

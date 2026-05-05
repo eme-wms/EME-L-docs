@@ -1,5 +1,5 @@
 ---
-title: "Сборка Android TSD"
+title: "Сборка Android ТСД"
 sidebar:
   order: 2
 ---

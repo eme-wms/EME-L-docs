@@ -281,6 +281,6 @@ Report_OnSave(blockID, Line, cellName, cellID, NewValue)
 
 ## См. также
 
-- [EME_SQL_Advanced.md](./EME_SQL_Advanced.md) — SQL-запросы для отчётов
-- [EME_L_Advanced_Features.md](./EME_L_Advanced_Features.md) — программирование компонентов
-- [EME_L_Database_Advanced.md](./EME_L_Database_Advanced.md) — дозор БД и транзакции
+- [EME_SQL_Advanced.md](/language/data/eme-sql) — SQL-запросы для отчётов
+- [EME_L_Advanced_Features.md](/language/advanced/components) — программирование компонентов
+- [EME_L_Database_Advanced.md](/language/data/database-advanced) — дозор БД и транзакции

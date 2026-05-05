@@ -323,6 +323,6 @@ TOTAL GROUP BY
 
 ## См. также
 
-- [EME_L_Database.md](./EME_L_Database.md) — классы данных Query, BitBuffer, Array
-- [EME_L_Database_Advanced.md](./EME_L_Database_Advanced.md) — дозор БД и SetSkipMode
-- [EME_L_Query_Reports.md](./EME_L_Query_Reports.md) — формирование отчётов на основе SQL-запросов
+- [EME_L_Database.md](/language/data/database) — классы данных Query, BitBuffer, Array
+- [EME_L_Database_Advanced.md](/language/data/database-advanced) — дозор БД и SetSkipMode
+- [EME_L_Query_Reports.md](/language/advanced/reports) — формирование отчётов на основе SQL-запросов
