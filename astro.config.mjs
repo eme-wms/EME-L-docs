@@ -68,7 +68,7 @@ export default defineConfig({
           autogenerate: { directory: "gui" },
         },
         {
-          label: "TSD и склад",
+          label: "ТСД и склад",
           autogenerate: { directory: "tsd" },
         },
         {
