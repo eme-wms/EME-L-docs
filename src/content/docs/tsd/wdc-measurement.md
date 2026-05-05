@@ -1,5 +1,5 @@
 ---
-title: "WDC измерения"
+title: "Измерение ВГХ"
 sidebar:
   order: 2
 ---
