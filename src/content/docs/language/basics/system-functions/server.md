@@ -70,7 +70,8 @@ data = is_server_transaction_data(trans_no, cmd_no)
 ```EME-L
 first = 0
 last = 0
-result = is_server_first_transaction(first, last)  'TRUE — транзакции есть'
+' Получить границы транзакций (TRUE — транзакции есть) '
+result = is_server_first_transaction(first, last)
 ```
 
 

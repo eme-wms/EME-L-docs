@@ -19,7 +19,8 @@ sidebar:
 **Возвращает**: `пустое значение`.
 
 ```EME-L
-is_beep(1000, 500)  'звук 1000 Гц, 500 мс
+' Звук 1000 Гц, 500 мс '
+is_beep(1000, 500)
 ```
 
 
@@ -35,7 +36,8 @@ is_beep(1000, 500)  'звук 1000 Гц, 500 мс
 **Возвращает**: пустое значение.
 
 ```EME-L
-is_sleep(1000)  'пауза 1 секунда
+' Пауза 1 секунда '
+is_sleep(1000)
 ```
 
 
@@ -70,9 +72,14 @@ is_exit(7, 366, "Ошибка!")
 **Возвращает**: `Integer` — 0 (целое число).
 
 ```EME-L
-is_do_wait_cursor(1)   'включить песочные часы
-is_do_wait_cursor(-1)  'выключить песочные часы
-is_do_wait_cursor(0)   'сбросить счётчик
+' Включить песочные часы '
+is_do_wait_cursor(1)
+
+' Выключить песочные часы '
+is_do_wait_cursor(-1)
+
+' Сбросить счётчик '
+is_do_wait_cursor(0)
 ```
 
 
@@ -86,7 +93,8 @@ is_do_wait_cursor(0)   'сбросить счётчик
 **Возвращает**: `Boolean` — TRUE если текущий поток — главный, иначе FALSE.
 
 ```EME-L
-result = is_main_thread()  'TRUE — главный поток'
+' Проверить, является ли поток главным (TRUE — главный поток) '
+result = is_main_thread()
 ```
 
 
@@ -102,12 +110,15 @@ result = is_main_thread()  'TRUE — главный поток'
 **Возвращает**: без параметров — `Boolean` — TRUE если текущий поток управляемый, иначе FALSE. С параметром — `пустое значение`.
 
 ```EME-L
-result = is_managed_thread()  'TRUE — поток управляемый'
+' Проверить, является ли поток управляемым (TRUE — управляемый) '
+result = is_managed_thread()
 
-' Включить управление с интервалом 1 секунда
+' Включить управление потоком с интервалом 1 секунда '
 is_managed_thread(1000)
-' ... выполнение работы ...
-is_managed_thread(0)     'отключить управление
+' ... выполнение работы ... '
+
+' Отключить управление потоком '
+is_managed_thread(0)
 ```
 
 
@@ -152,15 +163,32 @@ is_DelayedRefNuller(FALSE)
 **Возвращает**: значение системной настройки в соответствии с индексом. Тип зависит от индекса (см. выше).
 
 ```EME-L
-ref = is_system(0)      'ссылка на оператора
-flags = is_system(1)    'флаги доступа (32 бита)
-name = is_system(2)     'имя оператора
-code = is_system(3)     'код запуска модуля
-fcode = is_system(4)    'код филиала
-fref = is_system(5)     'ссылка на филиал
-pname = is_system(6)    'код (имя файла) проекта
-ws = is_system(7)       'признак рабочей станции
-bc = is_system(8)       'признак мозгового компьютера
+' Ссылка на оператора '
+ref = is_system(0)
+
+' Флаги доступа (32 бита) '
+flags = is_system(1)
+
+' Имя оператора '
+name = is_system(2)
+
+' Код запуска модуля '
+code = is_system(3)
+
+' Код филиала '
+fcode = is_system(4)
+
+' Ссылка на филиал '
+fref = is_system(5)
+
+' Код (имя файла) проекта '
+pname = is_system(6)
+
+' Признак рабочей станции '
+ws = is_system(7)
+
+' Признак мозгового компьютера '
+bc = is_system(8)
 ```
 
 
@@ -178,7 +206,8 @@ bc = is_system(8)       'признак мозгового компьютера
 **Возвращает**: пустое значение.
 
 ```EME-L
-is_set_system(10)    'установить OVL-код = 10
+' Установить OVL-код = 10 '
+is_set_system(10)
 ```
 
 
@@ -198,7 +227,8 @@ is_set_system(10)    'установить OVL-код = 10
 ```EME-L
 val = is_sys_param("M://MySetting", "")
 val = is_sys_param("W://WsSetting", 0)
-val = is_sys_param("M://SoftSetting", "", TRUE)    'SOFT_MODE
+' SOFT_MODE '
+val = is_sys_param("M://SoftSetting", "", TRUE)
 ```
 
 
@@ -234,7 +264,8 @@ is_add_sys_param("M://NewSetting", "value", "Описание", "val1\r\nval2")
 **Возвращает**: `Boolean` — `TRUE`, если ключ установлен, иначе `FALSE`.
 
 ```EME-L
-result = is_check_text_key("EMEL")  'TRUE — ключ /d_emel установлен'
+' Проверить наличие ключа /d_emel в командной строке (TRUE — установлен) '
+result = is_check_text_key("EMEL")
 ```
 
 

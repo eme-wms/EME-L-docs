@@ -18,10 +18,10 @@ sidebar:
 **Возвращает**: пустое значение.
 
 ```EME-L
-' Импорт-экспорт без обработчика
+' Выполнить импорт-экспорт EANCOM без обработчика '
 is_import_EANCOM_messages()
 
-' С объектом-обработчиком для определения папки
+' Выполнить импорт-экспорт с объектом-обработчиком '
 is_import_EANCOM_messages(myHandler)
 ```
 
@@ -39,7 +39,7 @@ is_import_EANCOM_messages(myHandler)
 
 ```EME-L
 code = is_EANCOM_name("UNA:+.? 'UNB+UNOC:2...")
-' code = "DESADV"
+' code = "DESADV" (пример) '
 
 code = is_EANCOM_name("C:\Messages\incoming.edi")
 ```
@@ -60,16 +60,14 @@ code = is_EANCOM_name("C:\Messages\incoming.edi")
 **Возвращает**: `Boolean` — `TRUE` если сегмент найден и успешно разобран, `FALSE` если сегмент не найден.
 
 ```EME-L
-' Извлечь первый сегмент LIN из файла
+' Извлечь первый сегмент LIN из файла '
 Dim coll = New CICollection()
-If (is_EANCOM_segment(coll, "C:\Messages\order.edi", "LIN"))
-    ' coll содержит элементы сегмента LIN'
-End If
+is_EANCOM_segment(coll, "C:\Messages\order.edi", "LIN")
+' coll содержит элементы сегмента LIN '
 
-' Извлечь второй сегмент LIN (индекс 1)
-If (is_EANCOM_segment(coll, messageText, "LIN", 1))
-    ' Второй LIN-сегмент обработан'
-End If
+' Извлечь второй сегмент LIN (индекс 1) '
+is_EANCOM_segment(coll, messageText, "LIN", 1)
+' Второй LIN-сегмент обработан '
 ```
 
 ---

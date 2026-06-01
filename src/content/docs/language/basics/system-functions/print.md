@@ -19,11 +19,11 @@ sidebar:
 
 ```EME-L
 printer = is_find_printer("Zebra")
-' printer = "ZDesigner ZT411-300dpi ZPL" (пример)
+' printer = "ZDesigner ZT411-300dpi ZPL" (пример) '
 
-If (is_find_printer("HP") = "")
-    ' Принтер не найден'
-End If
+' Проверить, что принтер HP не найден '
+result = (is_find_printer("HP") = "")
+result = (is_find_printer("HP") = "")
 ```
 
 ---
@@ -46,7 +46,7 @@ files.Add("C:\Docs\page2.pdf")
 files.Add("C:\Docs\page3.pdf")
 
 result = is_join_pdf("C:\Docs\combined.pdf", files)
-' result = 1 при успехе
+' result = 1 при успехе '
 ```
 
 ---
@@ -64,9 +64,9 @@ result = is_join_pdf("C:\Docs\combined.pdf", files)
 
 ```EME-L
 result = is_create_blank_pdf("C:\Docs\blank.pdf")
-' result = 1 при успехе
+' result = 1 при успехе '
 
-' С файлом-образцом
+' Создать PDF с файлом-образцом '
 result = is_create_blank_pdf("C:\Docs\new.pdf", "C:\Docs\template.pdf")
 ```
 
@@ -84,7 +84,7 @@ result = is_create_blank_pdf("C:\Docs\new.pdf", "C:\Docs\template.pdf")
 
 ```EME-L
 pages = is_getnoofpages_pdf("C:\Docs\report.pdf")
-' pages = 12 (пример)
+' pages = 12 (пример) '
 ```
 
 ---
@@ -105,12 +105,12 @@ pages = is_getnoofpages_pdf("C:\Docs\report.pdf")
 **Возвращает**: `Integer` — количество извлечённых страниц при успехе. Отрицательное значение при ошибке Ghostscript.
 
 ```EME-L
-' Извлечь все страницы в CIArchive
+' Извлечь все страницы PDF в CIArchive '
 Dim archive = New CIArchive()
 count = is_get_pdfimages("C:\Docs\report.pdf", archive)
-' count = количество извлечённых страниц
+' count = количество извлечённых страниц '
 
-' Извлечь страницы 1-3 с разрешением 150 DPI
+' Извлечь страницы 1-3 с разрешением 150 DPI '
 count = is_get_pdfimages("C:\Docs\report.pdf", archive, 0, 2, 150)
 ```
 

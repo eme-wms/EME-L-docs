@@ -16,7 +16,8 @@ sidebar:
 **Возвращает**: `Boolean` — `TRUE`, если текущий оператор — администратор, иначе `FALSE`.
 
 ```EME-L
-result = is_administrator()  'TRUE — администратор'
+' Проверить, является ли текущий оператор администратором (TRUE — администратор) '
+result = is_administrator()
 ```
 
 
@@ -32,7 +33,8 @@ result = is_administrator()  'TRUE — администратор'
 **Возвращает**: `Boolean` — `TRUE`, если бит установлен (оператор имеет право), иначе `FALSE`.
 
 ```EME-L
-result = is_access(5)  'TRUE — право доступа 5 есть'
+' Проверить право доступа по биту 5 (TRUE — есть право) '
+result = is_access(5)
 ```
 
 
@@ -46,7 +48,8 @@ result = is_access(5)  'TRUE — право доступа 5 есть'
 **Возвращает**: `Boolean` — `TRUE` при успешной идентификации, `FALSE` при ошибке.
 
 ```EME-L
-result = is_password()  'TRUE — пароль верный'
+' Проверить пароль текущего оператора (TRUE — верный) '
+result = is_password()
 ```
 
 
@@ -63,8 +66,11 @@ result = is_password()  'TRUE — пароль верный'
 **Возвращает**: пустое значение.
 
 ```EME-L
-is_change_password()                       'смена пароля текущего пользователя
-is_change_password(user_ref, TRUE)         'с указанием пользователя
+' Смена пароля текущего пользователя '
+is_change_password()
+
+' С указанием пользователя '
+is_change_password(user_ref, TRUE)
 ```
 
 

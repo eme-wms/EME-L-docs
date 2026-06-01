@@ -48,8 +48,11 @@ color = is_RGB(255, 128, 0)
 **Возвращает**: `Integer` — цветовое значение RGBA.
 
 ```EME-L
-color = is_RGBA(255, 0, 0, 128)   'полупрозрачный красный из каналов
-color = is_RGBA(rgb_color, 200)    'из готового RGB с прозрачностью
+' Полупрозрачный красный из каналов '
+color = is_RGBA(255, 0, 0, 128)
+
+' Из готового RGB с прозрачностью '
+color = is_RGBA(rgb_color, 200)
 ```
 
 
@@ -67,10 +70,17 @@ color = is_RGBA(rgb_color, 200)    'из готового RGB с прозрач�
 **Возвращает**: `Integer` — смешанный цвет COLORREF.
 
 ```EME-L
-mixed = is_blendRGB(color1, color2, 0.7)  '70% первый, 30% второй
-mixed = is_blendRGB(color1, color2)        '50/50
-mixed = is_blendRGB(color1, color2, 0.0)   'полностью второй цвет
-mixed = is_blendRGB(color1, color2, 1.0)   'полностью первый цвет
+' 70% первый, 30% второй '
+mixed = is_blendRGB(color1, color2, 0.7)
+
+' 50/50 '
+mixed = is_blendRGB(color1, color2)
+
+' Полностью второй цвет '
+mixed = is_blendRGB(color1, color2, 0.0)
+
+' Полностью первый цвет '
+mixed = is_blendRGB(color1, color2, 1.0)
 ```
 
 
@@ -131,10 +141,17 @@ color = is_sys_color("GRADIENTACTIVECAPTION")
 | 21 | тёмный хаки | Тёмный хаки |
 
 ```EME-L
-color = is_legend_color(0)   'красный
-color = is_legend_color(7)   'салатовый
-color = is_legend_color(21)  'тёмный хаки
-color = is_legend_color(99)  'серый (192,192,192) — вне диапазона
+' Красный '
+color = is_legend_color(0)
+
+' Салатовый '
+color = is_legend_color(7)
+
+' Тёмный хаки '
+color = is_legend_color(21)
+
+' Серый (192,192,192) — вне диапазона '
+color = is_legend_color(99)
 ```
 
 

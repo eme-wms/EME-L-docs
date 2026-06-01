@@ -64,7 +64,9 @@ val = is_reg_query_value("HKLM", "SOFTWARE\\MyApp", "Setting", "default")
 
 ```EME-L
 is_send_message("Button1", 100)
-is_send_message(0, 200)  'все органы
+
+' Все органы '
+is_send_message(0, 200)
 ```
 
 

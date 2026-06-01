@@ -40,13 +40,14 @@ text = is_msg("MessageName")
 **Возвращает**: при текстовом args[2] — `String` с именем нажатой кнопки ("OK", "CANCEL", "ABORT", "RETRY", "IGNORE", "YES", "NO", "CLOSE", "HELP"). При YESNOCANCEL (3) и числовом args[2] — `Integer` (Yes = -1, No = 0, Cancel = 1). При YES_NO_YESTOALL_NOTOALL_CANCEL (5) — `String` ("YES", "NO", "YESTOALL", "NOTOALL", "CANCEL"). В остальных случаях — `Boolean` (OK/Yes = TRUE, Cancel/No = FALSE).
 
 ```EME-L
-result = is_message("Заголовок", "Текст сообщения")  'TRUE — нажали OK'
+' Показать MessageBox с заголовком и текстом, TRUE — нажали OK '
+result = is_message("Заголовок", "Текст сообщения")
 
+' Диалог «Да/Нет/Отмена» с иконкой вопроса, YES=-1, NO=0, Cancel=1 '
 result = is_message("Вопрос", "Продолжить?", 3, 2)
-' result: -1=Yes, 0=No, 1=Cancel
 
+' Диалог «Да/Нет» с иконкой вопроса, строковые параметры, результат «YES» или «NO» '
 result = is_message("Заголовок", "Текст", "YESNO", "QUESTION")
-' result: "YES" или "NO"
 ```
 
 
@@ -85,6 +86,7 @@ is_message_beep(0)
 **Возвращает**: при текстовом args[2] — `String` с именем нажатой кнопки ("OK", "CANCEL", "ABORT", "RETRY", "IGNORE", "YES", "NO", "CLOSE", "HELP"). При YESNOCANCEL (3) и числовом args[2] — `Integer` (Yes = -1, No = 0, Cancel = 1). При YES_NO_YESTOALL_NOTOALL_CANCEL (5) — `String` ("YES", "NO", "YESTOALL", "NOTOALL", "CANCEL"). В остальных случаях — `Boolean` (OK/Yes = TRUE, Cancel/No = FALSE). При срабатывании таймаута возвращается значение кнопки по умолчанию (args[4]).
 
 ```EME-L
+' Автозакрытие через 5с '
 result = is_timer_message("Заголовок", "Автозакрытие через 5с", 2, 0, 0, FALSE, 5000)
 ```
 

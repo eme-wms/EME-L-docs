@@ -19,7 +19,9 @@ sidebar:
 
 ```EME-L
 is_set_language("EN")
-is_set_language()  'язык по умолчанию
+
+' Язык по умолчанию '
+is_set_language()
 ```
 
 
@@ -107,7 +109,8 @@ translated = tr("Hello", "context")
 **Возвращает**: `String` — транслитерированная строка.
 
 ```EME-L
-result = is_transliterate("Привет")  'Privet
+' Privet '
+result = is_transliterate("Привет")
 ```
 
 

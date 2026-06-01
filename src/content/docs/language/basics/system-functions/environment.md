@@ -72,7 +72,8 @@ user = is_domain_username()
 **Возвращает**: `Boolean` — TRUE, если код выполняется на сервере, иначе FALSE.
 
 ```EME-L
-result = is_server()  'TRUE — код выполняется на сервере'
+' Проверить, выполняется ли код на сервере БД (TRUE — сервер) '
+result = is_server()
 ```
 
 
@@ -88,9 +89,11 @@ result = is_server()  'TRUE — код выполняется на сервер�
 **Возвращает**: `Boolean` — TRUE, если условие выполнено, иначе FALSE.
 
 ```EME-L
-result = is_http_server()  'TRUE — код на HTTP-сервере'
+' Проверить, выполняется ли код на HTTP-сервере (TRUE — HTTP-сервер) '
+result = is_http_server()
 
-result = is_http_server(TRUE)  'TRUE — код на транзакционном порту HTTP-сервера'
+' Проверить транзакционный порт HTTP-сервера (TRUE — транзакционный порт) '
+result = is_http_server(TRUE)
 ```
 
 
@@ -104,7 +107,8 @@ result = is_http_server(TRUE)  'TRUE — код на транзакционно�
 **Возвращает**: `Boolean` — TRUE, если код выполняется на мозговом компьютере, иначе FALSE.
 
 ```EME-L
-result = is_brain_computer()  'TRUE — мозговой компьютер'
+' Проверить, выполняется ли код на мозговом компьютере (TRUE — мозговой компьютер) '
+result = is_brain_computer()
 ```
 
 
@@ -146,7 +150,8 @@ wtype = is_workstation_type()
 **Возвращает**: `String` — `"LINUX"` для Linux, `"WINDOWS"` для Windows.
 
 ```EME-L
-result = (is_system_family() = "LINUX")  'TRUE — выполнение на Linux'
+' Проверить, что текущая ОС — Linux (TRUE — Linux) '
+result = (is_system_family() = "LINUX")
 ```
 
 
@@ -204,7 +209,8 @@ keys = is_keycode()
 **Возвращает**: `Boolean` — TRUE, если клавиша нажата, иначе FALSE.
 
 ```EME-L
-pressed = is_key_press(0x41)  'TRUE — нажата клавиша A'
+' Проверить, нажата ли клавиша A (TRUE — нажата) '
+pressed = is_key_press(0x41)
 ```
 
 
