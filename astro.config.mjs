@@ -37,7 +37,19 @@ export default defineConfig({
         },
         {
           label: "Язык EME-L — Основы",
-          autogenerate: { directory: "language/basics" },
+          items: [
+            { label: "Синтаксис", link: "/language/basics/syntax/" },
+            { label: "Классы и объекты", link: "/language/basics/classes/" },
+            { label: "События", link: "/language/basics/events/" },
+            { label: "Константы", link: "/language/basics/constants/" },
+            { label: "IS-функции", link: "/language/basics/is-functions/" },
+            {
+              label: "Системные функции",
+              link: "/language/basics/system-functions/",
+              collapsed: true,
+              autogenerate: { directory: "language/basics/system-functions" },
+            },
+          ],
         },
         {
           label: "Язык EME-L — Данные",
