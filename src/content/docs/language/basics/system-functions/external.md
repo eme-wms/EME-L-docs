@@ -60,13 +60,9 @@ is_shell_execute_link("d:\\EME\\app.lnk")
 **Возвращает**: `Boolean` — TRUE если текущая версия >= указанной.
 
 ```EME-L
-If (is_check_version(30, 5))
-    'Версия ядра >= 30.5'
-End If
+result = is_check_version(30, 5)  'TRUE — версия ядра >= 30.5'
 
-If (is_check_version(30, 5, 20, 0))
-    'Ядро >= 30.5 и метапроект >= 20.0'
-End If
+result = is_check_version(30, 5, 20, 0)  'TRUE — ядро >= 30.5 и метапроект >= 20.0'
 ```
 
 

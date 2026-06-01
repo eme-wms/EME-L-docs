@@ -63,8 +63,9 @@ is_SYS_mem_dump()
 **Возвращает**: `Boolean` — TRUE если включён режим тестирования.
 
 ```EME-L
+' В режиме тестирования UI не показываем MessageBox
 If (is_ui_test_mode())
-    'Не показываем MessageBox'
+    showMsg = FALSE
 End If
 ```
 
@@ -195,9 +196,7 @@ r = robot()
 **Возвращает**: `Boolean` — TRUE при успехе, FALSE если условия не выполнены.
 
 ```EME-L
-If (is_enable_dataslice())
-    'Срезы включены'
-End If
+result = is_enable_dataslice()  'TRUE — срезы включены'
 ```
 
 

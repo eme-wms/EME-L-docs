@@ -70,9 +70,7 @@ data = is_server_transaction_data(trans_no, cmd_no)
 ```EME-L
 first = 0
 last = 0
-If (is_server_first_transaction(first, last))
-    'Транзакции есть'
-End If
+result = is_server_first_transaction(first, last)  'TRUE — транзакции есть'
 ```
 
 

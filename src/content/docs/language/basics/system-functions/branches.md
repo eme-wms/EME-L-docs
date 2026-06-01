@@ -16,9 +16,7 @@ sidebar:
 **Возвращает**: `Boolean` — TRUE, если текущий филиал — центр, иначе FALSE.
 
 ```EME-L
-If (is_center())
-    'Центральный филиал'
-End If
+result = is_center()  'TRUE — центральный филиал'
 ```
 
 
@@ -32,9 +30,7 @@ End If
 **Возвращает**: `Boolean` — TRUE, если текущий филиал — главный центр, иначе FALSE.
 
 ```EME-L
-If (is_root_center())
-    'Главный центр'
-End If
+result = is_root_center()  'TRUE — главный (корневой) центр'
 ```
 
 
@@ -48,9 +44,7 @@ End If
 **Возвращает**: `Boolean` — TRUE, если текущий филиал — локальный центр, иначе FALSE.
 
 ```EME-L
-If (is_node_center())
-    'Локальный центр'
-End If
+result = is_node_center()  'TRUE — локальный (промежуточный) центр'
 ```
 
 
@@ -64,9 +58,7 @@ End If
 **Возвращает**: `Boolean` — TRUE, если текущий филиал — обычный филиал, иначе FALSE.
 
 ```EME-L
-If (is_filial())
-    'Обычный филиал'
-End If
+result = is_filial()  'TRUE — обычный филиал'
 ```
 
 
@@ -80,9 +72,7 @@ End If
 **Возвращает**: `Boolean` — TRUE, если текущий филиал — системный, иначе FALSE.
 
 ```EME-L
-If (is_system_filial())
-    'Системный филиал'
-End If
+result = is_system_filial()  'TRUE — системный филиал'
 ```
 
 

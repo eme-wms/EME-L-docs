@@ -40,9 +40,7 @@ text = is_msg("MessageName")
 **Возвращает**: при текстовом args[2] — `String` с именем нажатой кнопки ("OK", "CANCEL", "ABORT", "RETRY", "IGNORE", "YES", "NO", "CLOSE", "HELP"). При YESNOCANCEL (3) и числовом args[2] — `Integer` (Yes = -1, No = 0, Cancel = 1). При YES_NO_YESTOALL_NOTOALL_CANCEL (5) — `String` ("YES", "NO", "YESTOALL", "NOTOALL", "CANCEL"). В остальных случаях — `Boolean` (OK/Yes = TRUE, Cancel/No = FALSE).
 
 ```EME-L
-If (is_message("Заголовок", "Текст сообщения"))
-    'Нажали OK'
-End If
+result = is_message("Заголовок", "Текст сообщения")  'TRUE — нажали OK'
 
 result = is_message("Вопрос", "Продолжить?", 3, 2)
 ' result: -1=Yes, 0=No, 1=Cancel

@@ -86,9 +86,7 @@ is_do_wait_cursor(0)   'сбросить счётчик
 **Возвращает**: `Boolean` — TRUE если текущий поток — главный, иначе FALSE.
 
 ```EME-L
-If (is_main_thread())
-    'Главный поток'
-End If
+result = is_main_thread()  'TRUE — главный поток'
 ```
 
 
@@ -104,9 +102,7 @@ End If
 **Возвращает**: без параметров — `Boolean` — TRUE если текущий поток управляемый, иначе FALSE. С параметром — `пустое значение`.
 
 ```EME-L
-If (is_managed_thread())
-    'Поток управляемый'
-End If
+result = is_managed_thread()  'TRUE — поток управляемый'
 
 ' Включить управление с интервалом 1 секунда
 is_managed_thread(1000)
@@ -238,9 +234,7 @@ is_add_sys_param("M://NewSetting", "value", "Описание", "val1\r\nval2")
 **Возвращает**: `Boolean` — `TRUE`, если ключ установлен, иначе `FALSE`.
 
 ```EME-L
-If (is_check_text_key("EMEL"))
-    'Ключ /d_emel установлен'
-End If
+result = is_check_text_key("EMEL")  'TRUE — ключ /d_emel установлен'
 ```
 
 

@@ -72,9 +72,7 @@ user = is_domain_username()
 **Возвращает**: `Boolean` — TRUE, если код выполняется на сервере, иначе FALSE.
 
 ```EME-L
-If (is_server())
-    'Код выполняется на сервере'
-End If
+result = is_server()  'TRUE — код выполняется на сервере'
 ```
 
 
@@ -90,13 +88,9 @@ End If
 **Возвращает**: `Boolean` — TRUE, если условие выполнено, иначе FALSE.
 
 ```EME-L
-If (is_http_server())
-    'Код на HTTP-сервере'
-End If
+result = is_http_server()  'TRUE — код на HTTP-сервере'
 
-If (is_http_server(TRUE))
-    'Код на транзакционном порту HTTP-сервера'
-End If
+result = is_http_server(TRUE)  'TRUE — код на транзакционном порту HTTP-сервера'
 ```
 
 
@@ -110,9 +104,7 @@ End If
 **Возвращает**: `Boolean` — TRUE, если код выполняется на мозговом компьютере, иначе FALSE.
 
 ```EME-L
-If (is_brain_computer())
-    'Мозговой компьютер'
-End If
+result = is_brain_computer()  'TRUE — мозговой компьютер'
 ```
 
 
@@ -154,9 +146,7 @@ wtype = is_workstation_type()
 **Возвращает**: `String` — `"LINUX"` для Linux, `"WINDOWS"` для Windows.
 
 ```EME-L
-If (is_system_family() = "LINUX")
-    'Выполнение на Linux'
-End If
+result = (is_system_family() = "LINUX")  'TRUE — выполнение на Linux'
 ```
 
 
@@ -214,9 +204,7 @@ keys = is_keycode()
 **Возвращает**: `Boolean` — TRUE, если клавиша нажата, иначе FALSE.
 
 ```EME-L
-If (is_key_press(0x41))
-    'Нажата клавиша A'
-End If
+pressed = is_key_press(0x41)  'TRUE — нажата клавиша A'
 ```
 
 

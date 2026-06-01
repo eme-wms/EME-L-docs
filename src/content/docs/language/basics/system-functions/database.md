@@ -35,9 +35,7 @@ result = is_export_db_structure("structure.dbh")
 **Возвращает**: `Boolean` — TRUE при успехе.
 
 ```EME-L
-If (is_import_db_structure("structure.dbh"))
-    'Импорт успешен'
-End If
+result = is_import_db_structure("structure.dbh")  'TRUE — импорт успешен'
 ```
 
 
@@ -80,14 +78,10 @@ is_archive_DB(Date(2024, 1, 1), Date(2023, 1, 1), Date(2099, 12, 31), "C:\Archiv
 
 ```EME-L
 ' Проверка по номеру записи и строки
-If (is_eme_is_arc(100, 5))
-    ' Строка 5 записи 100 помечена к архивации'
-End If
+arc = is_eme_is_arc(100, 5)  'TRUE — строка 5 записи 100 помечена к архивации'
 
 ' Проверка по объекту CEMERec
-If (is_eme_is_arc(rec))
-    ' Текущая строка записи помечена'
-End If
+arc = is_eme_is_arc(rec)  'TRUE — текущая строка записи помечена'
 ```
 
 ---

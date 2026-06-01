@@ -16,9 +16,7 @@ sidebar:
 **Возвращает**: `Boolean` — `TRUE`, если текущий оператор — администратор, иначе `FALSE`.
 
 ```EME-L
-If (is_administrator())
-    'Администратор'
-End If
+result = is_administrator()  'TRUE — администратор'
 ```
 
 
@@ -34,9 +32,7 @@ End If
 **Возвращает**: `Boolean` — `TRUE`, если бит установлен (оператор имеет право), иначе `FALSE`.
 
 ```EME-L
-If (is_access(5))
-    'Право доступа 5 есть'
-End If
+result = is_access(5)  'TRUE — право доступа 5 есть'
 ```
 
 
@@ -50,9 +46,7 @@ End If
 **Возвращает**: `Boolean` — `TRUE` при успешной идентификации, `FALSE` при ошибке.
 
 ```EME-L
-If (is_password())
-    'Пароль верный'
-End If
+result = is_password()  'TRUE — пароль верный'
 ```
 
 
