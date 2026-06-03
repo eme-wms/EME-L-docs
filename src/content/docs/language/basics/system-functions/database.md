@@ -15,7 +15,7 @@ sidebar:
 |----------|-----|-------------|----------|
 | args[0] | String | Да | Имя файла |
 
-**Возвращает**: `Integer` — 0 при успехе, -1 при ошибке.
+**Возвращает**: `Integer` — 1 при успехе, 0 при пустом имени файла.
 
 ```EME-L
 result = is_export_db_structure("structure.dbh")
@@ -35,7 +35,7 @@ result = is_export_db_structure("structure.dbh")
 **Возвращает**: `Boolean` — TRUE при успехе.
 
 ```EME-L
-' Импортировать структуру БД из файла (TRUE — успешно) '
+' Импортировать структуру БД из файла (TRUE — импорт успешен) '
 result = is_import_db_structure("structure.dbh")
 ```
 

@@ -23,7 +23,6 @@ printer = is_find_printer("Zebra")
 
 ' Проверить, что принтер HP не найден '
 result = (is_find_printer("HP") = "")
-result = (is_find_printer("HP") = "")
 ```
 
 ---
