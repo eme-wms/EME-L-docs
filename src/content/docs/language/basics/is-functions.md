@@ -117,3 +117,83 @@ Result = is_check_context("Dialog")
 ' Получить имя текущего диалога '
 DialogName = is_get_context("Dialog")
 ```
+
+---
+
+## is-функции группы DateTime — дата и время
+
+is-функции группы DateTime отвечают за работу с датами, временем, календарными периодами и часовыми поясами в языке EME-L. в системе EME.WMS эти функции используются для форматирования дат, расчета периодов, преобразования между временными зонами и извлечения компонентов даты/времени.
+
+Доступные функции:
+
+| Функция | Описание |
+|---------|----------|
+| `is_dos_date()` | Текущая системная дата |
+| `is_dos_time()` | Текущее системное время |
+| `is_datetime(arg0)` | Преобразование к типу дата/время |
+| `is_fdatetime(arg0[, arg1])` | Форматирование даты/времени или обратное преобразование |
+| `is_leap_year(arg0)` | Проверка високосного года |
+| `is_strmonth(arg0[, arg1])` | Название месяца на русском языке |
+| `is_start_date_week(arg0[, arg1])` | Дата начала недели (понедельник) |
+| `is_final_date_week(arg0[, arg1])` | Дата конца недели (воскресенье) |
+| `is_day_of_week(arg0)` | Номер дня недели (1 — понедельник) |
+| `is_number_week_of_year(arg0)` | Номер недели в году |
+| `is_week(arg0)` | Номер недели (неполная считается полной) |
+| `is_start_date_week_of_number(arg0, arg1)` | Дата начала недели по номеру и году |
+| `is_day_count_from_Christ(arg0)` | Количество дней от базовой даты |
+| `is_start_date_month(arg0[, arg1])` | Дата начала месяца |
+| `is_final_date_month(arg0[, arg1])` | Дата конца месяца |
+| `is_start_date_decade(arg0[, arg1])` | Дата начала декады |
+| `is_final_date_decade(arg0[, arg1])` | Дата конца декады |
+| `is_start_date_quarter(arg0[, arg1])` | Дата начала квартала |
+| `is_final_date_quarter(arg0[, arg1])` | Дата конца квартала |
+| `is_parsing_date(arg0[, arg1[, arg2]])` | Разбор строки даты |
+| `is_parsing_time(arg0[, arg1])` | Разбор строки времени |
+| `is_quarter_number(arg0)` | Номер квартала |
+| `is_year(arg0)` | Год из даты/времени |
+| `is_shortyear(arg0)` | Последние две цифры года |
+| `is_month(arg0)` | Месяц из даты/времени |
+| `is_day(arg0)` | День месяца |
+| `is_hour(arg0)` | Час из даты/времени |
+| `is_minute(arg0)` | Минуты из даты/времени |
+| `is_second(arg0)` | Секунды из даты/времени |
+| `is_csecond(arg0)` | Сотые доли секунды |
+| `is_date([arg0[, ...]])` | Создание даты из компонентов |
+| `is_current_date()` | Бортовая дата компьютера |
+| `is_current_time()` | Бортовое время компьютера |
+| `is_days_in_month(arg0[, arg1])` | Количество дней в месяце |
+| `is_days_in_year(arg0)` | Количество дней в году |
+| `is_null_date()` | Нулевая дата |
+| `is_null_time()` | Нулевое время |
+| `is_time_interval(arg0[, arg1])` | Строковое представление временного интервала |
+| `is_datetime2USDTstring(arg0, arg1)` | Дата/время в строку YYYYMMDDHHMMSS |
+| `is_USDTstring2datetime(arg0)` | Строка YYYYMMDDHHMMSS в дату/время |
+| `is_time([arg0[, ...]])` | Создание времени из компонентов |
+| `is_system_utc_local_bias()` | Смещение UTC в минутах |
+| `is_system_time_to_local_time(arg0[, arg1])` | UTC в локальное время |
+| `is_local_time_to_system_time(arg0[, arg1])` | Локальное время в UTC |
+| `is_start_date_period([arg0[, arg1]])` | Начало четырехнедельного периода |
+| `is_ISO8601_to_datetime(arg0)` | ISO 8601 в дату/время |
+| `is_datetime_to_ISO8601(arg0)` | Дата/время в ISO 8601 |
+| `is_time_zone()` | Часовой пояс (+|-)hh:mm |
+| `is_date_diff(arg0, arg1, arg2)` | Разность дат (аналог DATEDIFF) |
+| `is_diff_datetime_in_sec(arg0, arg1)` | Разность в секундах |
+
+**Подробная документация** с таблицами параметров, типами и примерами кода — в разделе [Системные функции → Дата и время](../system-functions/datetime/).
+
+```EME-L
+' Текущая дата и время '
+Today = is_dos_date()
+Now = is_dos_time()
+
+' Форматирование даты '
+TextDate = is_fdatetime(Today)
+
+' Извлечение компонентов '
+Year = is_year(Today)
+Month = is_month(Today)
+Day = is_day(Today)
+
+' Разность дат в днях '
+Diff = is_date_diff("day", StartDate, EndDate)
+```
