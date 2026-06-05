@@ -53,6 +53,6 @@ sidebar:
 
 ---
 
-**Всего функций:** 663
+**Всего функций:** 669
 
 См. также: [EME_L_Syntax.md](EME_L_Syntax.md) — синтаксис EME-L, [EME_L_IS_Functions.md](EME_L_IS_Functions.md) — is-функции групп Bit/Browser/Context, [EME_L_Classes.md](EME_L_Classes.md) — объектная модель.
