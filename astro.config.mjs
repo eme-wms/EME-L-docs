@@ -87,6 +87,10 @@ export default defineConfig({
           items: [{ autogenerate: { directory: "platform" } }],
         },
         {
+          label: "Тестирование",
+          items: [{ autogenerate: { directory: "testing" } }],
+        },
+        {
           label: "Развёртывание",
           items: [{ autogenerate: { directory: "deployment" } }],
         },
