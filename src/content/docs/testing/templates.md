@@ -242,6 +242,103 @@ CreateStartingTasks()
 
 ---
 
+## Шаблон теста с выбором через Browser
+
+```eme-l
+TestWithBrowser()
+{
+    Select (Query)
+        SELECT
+            [@],
+            [Рег.No],
+            [Дата],
+            [Время]
+        FROM
+            [Заказы]
+        WHERE
+            {
+                r_Orders = Const(Object("dsDB", "Orders"));
+                r_Orders.SetLine(is_query(, "@"));
+                Return r_Orders.GetStatusAsNumber() >= osIntroduced;
+            }
+    End Select
+
+    ' FreeBrowser — выбор нескольких строк '
+    Browser = Object("FreeBrowser", Query, "Заказы");
+    Browser.Run(TRUE);
+
+    ' Собираем выбранные строки '
+    OrdersRefs = Object("Array");
+    For (QueryLine = Browser.GetSelected(0);
+         QueryLine != NULL_REF;
+         QueryLine = Browser.GetSelected(QueryLine + 1))
+        Line = Query.GetData("@", QueryLine);
+        OrdersRefs.Add(Line);
+    End For
+
+    If (OrdersRefs.GetSize() > 0)
+        is_transaction(1, "Обработка выбранных заказов");
+        Loop (OrdersRefs)
+            r_Orders = Object("dsDB", "Orders");
+            r_Orders.SetLine(OrdersRefs.Get());
+            ' ... обработка ... '
+        End Loop
+        is_transaction(-1);
+    End If
+}
+```
+
+**Ключевые моменты:**
+- `FreeBrowser` позволяет выбрать несколько строк (галочками)
+- `Browser.Run(TRUE)` — модальный вызов
+- `Browser.GetSelected(0)` — первая выбранная строка
+- `Browser.GetSelected(prev + 1)` — следующая выбранная строка
+
+---
+
+## Шаблон серверного теста
+
+```eme-l
+Tests.TestUnit
+************************             Флаги             ************************
+ДЛ: Нет
+НК: Да
+ВЗ: Нет
+************************          Конструктор          ************************
+AAA = 0;
+
+************************             Методы            ************************
+Run()
+{
+    Params = Object("Parameters");
+    Params.PutParam("Action", "Run");
+    Params.PutParam("Class", "TestUnit");
+    Params.PutParam("Method", "TestRun");
+
+    ' Отправляем задание на сервер '
+    Result = is_server_emel(1009, Params);
+    Params.SetString(Result);
+
+    ' Декодируем результат из base64 '
+    ssSA = is_frombase64(Params.GetParam("Result", ""));
+}
+
+TestRun()
+{
+    is_catastrophic_log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    Return is_server();
+}
+```
+
+**Как это работает:**
+1. `Run()` вызывается на клиенте — формирует параметры и отправляет на сервер
+2. `is_server_emel(1009, Params)` — отправляет задание на сервер EME-L
+3. Сервер выполняет метод `TestRun()`
+4. Результат возвращается в `Params`
+5. `is_frombase64()` — декодирует ответ
+
+---
+
 ## Контрольный список при создании теста
 
 ### Юнит-тест

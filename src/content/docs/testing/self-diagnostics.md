@@ -301,6 +301,104 @@ is_test_references_counter(10, 50)
 
 ---
 
+## Дозор базы данных (DBWatch)
+
+`DBWatch` — механизм отслеживания изменений в БД между подготовкой данных и записью в транзакции. Используется для предотвращения конфликтов при параллельном доступе.
+
+### Пример с блокировкой
+
+```eme-l
+Tests.TestDBWatch
+************************             Флаги             ************************
+ДЛ: Нет
+НК: Да
+ВЗ: Нет
+************************          Конструктор          ************************
+m_DBWatch = Object("DBWatch");
+m_TrueSign;
+m_Line;
+
+************************             Методы            ************************
+/* Подготовка данных вне транзакции */
+OnPrepare()
+{
+    r_GoodsItem = Object("dsDB", "GoodsItem");
+    r_GoodsItem.SetFirstLine();
+    m_TrueSign = FALSE;
+    If (r_GoodsItem.IsValidLine() & ~r_GoodsItem.IsTrueSign())
+        m_TrueSign = TRUE;
+        m_Line = r_GoodsItem.GetLine();
+    End If
+    'Добавляем поле GlobalFlagsThreeFld на текущей строке в наблюдение'
+    m_DBWatch.WatchFieldLine(r_GoodsItem.GetGlobalFlagsThreeFld());
+}
+
+/* Запись внутри транзакции */
+OnChange()
+{
+    If (m_TrueSign)
+        r_GoodsItem = Object("dsDB", "GoodsItem");
+        r_GoodsItem.SetLine(m_Line);
+        r_GoodsItem.SetTrueSign();
+    End If
+}
+
+/* Полный цикл с блокировкой */
+Do()
+{
+    'Начинаем дозор (до чтения данных БД)'
+    'is_db_watch поднимает данные на верхний уровень'
+    is_db_watch(1);
+
+    'Проводим подготовку данных вне транзакции'
+    If (is_workstation_mode() != "MONO")
+        OnPrepare();
+    End If
+
+    'Открываем транзакцию'
+    is_transaction(1, "Устанавливаем ЧЗ");
+
+    'Завершаем дозор — больше информация не собирается'
+    is_db_watch(-1);
+
+    'Проверяем изменения: если есть — делаем подготовку заново'
+    If (is_workstation_mode() == "MONO" | m_DBWatch.Check() != "")
+        OnPrepare();
+    End If
+
+    'Производим изменения в БД на основе ранее подготовленных данных'
+    OnChange();
+
+    'Закрываем транзакцию'
+    is_transaction(-1);
+}
+
+/* Простой вариант без блокировки */
+Do2()
+{
+    is_transaction(1, "Устанавливаем ЧЗ");
+    r_GoodsItem = Object("dsDB", "GoodsItem");
+    r_GoodsItem.SetFirstLine();
+    If (~r_GoodsItem.IsTrueSign())
+        r_GoodsItem.SetTrueSign();
+    End If
+    is_transaction(-1);
+}
+```
+
+**Паттерн DBWatch:**
+1. `is_db_watch(1)` — начать наблюдение (до чтения данных)
+2. `OnPrepare()` — читаем данные, запоминаем состояние
+3. `m_DBWatch.WatchFieldLine(...)` — добавляем поля в наблюдение
+4. `is_transaction(1)` — открываем транзакцию
+5. `is_db_watch(-1)` — завершаем наблюдение
+6. `m_DBWatch.Check()` — проверяем, изменились ли данные
+7. Если изменились — повторяем `OnPrepare()`
+8. `OnChange()` — записываем изменения
+9. `is_transaction(-1)` — закрываем транзакцию
+
+---
+
 ## Тест виртуальной файловой системы (VFS)
 
 ```eme-l

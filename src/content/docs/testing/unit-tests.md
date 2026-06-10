@@ -193,6 +193,149 @@ JSON_NODE_TYPE_ARRAY   = 6   ' массив [ ]
 | `Tests.TestTranslate` | Локализация (`tr()`) |
 | `Tests.TestExternalDB` | ODBC к внешней БД |
 
+## Примеры из песочницы `Tests.Test`
+
+Файл `Test.txt` — «песочница» разработчиков с множеством примеров использования объектов.
+
+### CubiScan — измерение ВГХ
+
+```eme-l
+Cubi()
+{
+    CubiScan = Object("CubiScan", "10.24.2.251", 443);
+    CubiScan.SetDebug(True);
+    Result = CubiScan.Ping();
+    is_message("Cubi Ping", Result, 1, 1);
+
+    Result = CubiScan.Measure();
+    is_message("Cubi Measure", Result, 1, 1);
+    If (Result == 200)
+        is_message("Cubi ВГХ",
+            "Length = " + CubiScan.GetLength() +
+            ", Width = " + CubiScan.GetWidth() +
+            ", Height = " + CubiScan.GetHeight() +
+            ", Weight = " + CubiScan.GetWeight(), 1, 1);
+    End If
+}
+```
+
+### Фильтр `MustBeInMap`
+
+```eme-l
+TestMustBeInMap()
+{
+    StockStatusMap = Object("Map", 17, 0);
+    StockStatusMap.SetAt(is_char("M"), 0);
+    StockStatusMap.SetAt(is_char("K"), 0);
+
+    r_Registers = Object("dsDB", "Registers");
+    r_Registers.SetSkipMode();
+    r_Registers.GetStockStatusFld().MustBeInMap(StockStatusMap);
+    Count = 0;
+    Loop (r_Registers)
+        Count = Count + 1;
+    End Loop
+
+    is_message("TestMustBeInMap", Count, "OK", "INFORMATION");
+}
+```
+
+### Присоединённое поле времени (`AttachTimeFld`)
+
+```eme-l
+TestAttachTimeFld()
+{
+    r_Document = Object("dsDB", "Document");
+    r_Document.SetSkipMode();
+    ' Присоединяем время к дате для фильтрации по datetime '
+    r_Document.GetCreateDateFld().AttachTimeFld();
+    r_Document.GetCreateDateFld().MustBeGT(is_date(19, 11, 2018, 11, 0));
+    r_Document.GetCreateDateFld().MustBeLT(is_date(19, 11, 2018, 12, 0));
+    Count = 0;
+    Loop (r_Document)
+        Count = Count + 1;
+    End Loop
+
+    is_message("TestAttachTimeFld", Count, "OK", "INFORMATION");
+}
+```
+
+### Копирование записей
+
+```eme-l
+CopyOrder()
+{
+    nLineFrom = 291415;
+    is_transaction(1, tr("Копирование заказа"));
+
+    dbOrder = Object("dsDB", "Orders");
+    dbOrder.AppendAndSetLine();
+    dbOrder.CopyLineFrom(nLineFrom);
+    dbOrder.PutOrdersBatchRef(NULL_REF);
+    dbOrder.PutShipmentRef(NULL_REF);
+    dbOrder.ClrIntroduced();
+    dbOrder.ClrFinished();
+    dbOrder.PutOrderNo(dbOrder.GetOrderNo() + "_" + is_time());
+
+    ' Копируем строки '
+    dbLines = Object("dsDB", "OrdersLines");
+    dbLines.SetChain("@Заказ", nLineFrom);
+    arr = Object("Array");
+    For (dbLines.SetFirstLine(); dbLines.IsValidLine(); dbLines.SetNextLine())
+        arr.Add(dbLines.GetLine());
+    End For
+
+    dbLines.SetChain("@Заказ", dbOrder.GetLine());
+    For (i = 0; i < arr.GetSize(); i = i + 1)
+        dbLines.AppendAndSetLine();
+        dbLines.CopyLineFrom(arr.GetAt(i));
+        dbLines.PutOrderRef(dbOrder.GetLine());
+    End For
+
+    dbOrder.Introduce();
+    is_transaction(-1);
+}
+```
+
+### Семафор
+
+```eme-l
+rwer()
+{
+    Semaphore = Object("Semaphore", "dfsdfsdfsdf", False);
+    If (~Semaphore.Check())
+        Semaphore.Set();
+    End If
+
+    If (Semaphore.Check())
+        ' Семафор установлен '
+    End If
+}
+```
+
+### Итерация по `Map` и `BitBuffer`
+
+```eme-l
+MapTest()
+{
+    Map = Object("Map");
+    Map.SetAt("a", 1);
+    Map.SetAt("b", 2);
+    Loop(Map)
+        Key = Map.GetKey();
+        Value = Map.GetValue();
+    End Loop
+
+    BitBuffer = Object("BitBuffer");
+    BitBuffer.HewItemGrow(2);
+    Loop(BitBuffer)
+        BitBuffer.GetLine();
+    End Loop
+}
+```
+
+---
+
 ## Запросы-тесты
 
 В директории `Запросы/` находятся SQL-тесты:

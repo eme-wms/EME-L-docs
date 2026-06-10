@@ -276,11 +276,185 @@ TestJsonLoad()
 
 ## ERP-стресс-тесты
 
-Класс `ERPSolution.ERPStressTest` (`ERPStressTest.txt`) — расширение ERP-тестов для массовой выгрузки:
+Класс `ERPSolution.ERPStressTest` (`ERPStressTest.txt`) — расширение ERP-тестов для массовой выгрузки и симуляции.
 
-- `UploadErpWmsMessages()` — 16 пунктов меню для массовой выгрузки ERP→WMS
-- `UploadWmsErpMessages()` — 16 пунктов меню для массовой выгрузки WMS→ERP
-- `VerifyMessages()` — 13 верификаторов по каждому типу сообщений
+### Массовая выгрузка сообщений
+
+```eme-l
+UploadErpWmsMessages()
+{
+    m_ERPEngine = Object("IClass", "ERPEngineObject_" + Object().GetObjectName(), "ERPEngine");
+
+    Menu = Object("IClass", "ActiveMenuObject_" + Object().GetObjectName(), "ActiveMenu");
+    Menu.AddMenuItem("Выгрузка всех продуктов#Из карточки", "UploadGoodsItems", "All");
+    Menu.AddMenuItem("Выгрузка всех клиентов", "UploadClients");
+    Menu.AddMenuItem("Выгрузка всех ASN", "UploadASNs");
+    Menu.AddMenuItem("Выгрузка всех заказов", "UploadOrders");
+    Menu.AddMenuItem("Выгрузка всех перевозок", "UploadShipments");
+    ' ... ещё 11 пунктов ... '
+    Menu.Run();
+}
+```
+
+### Верификаторы сообщений
+
+```eme-l
+VerifyMessages(ClassName)
+{
+    Object("IClass", ClassName, ClassName).RunVerify();
+}
+```
+
+| Верификатор | Тип сообщения |
+|-------------|---------------|
+| `ERPAsnVerifier` | ASN |
+| `ERPChangeVerifier` | CHANGE |
+| `ERPChangePoVerifier` | CHANGE_PO |
+| `ERPClassifierVerifier` | CLASSIFIER |
+| `ERPGoodsVerifier` | GOODS |
+| `ERPOffwritePoVerifier` | OFFWRITE_PO |
+| `ERPOrdersVerifier` | ORDERS |
+| `ERPPalletsVerifier` | PALLETS |
+| `ERPPoVerifier` | PO |
+| `ERPShipmentsVerifier` | SHIPMENTS |
+| `ERPStaffVerifier` | STAFF |
+| `ERPTransferPoVerifier` | TRANSFER_PO |
+
+### Симулятор EME.WMS
+
+```eme-l
+SimulateEmeWms()
+{
+    Menu = Object("IClass", "ActiveMenuObject_" + Object().GetObjectName(), "ActiveMenu");
+    Menu.AddMenuItem("Тестовый склад", "CreateTestWarehouse");
+    Menu.AddMenuItem("Приход#Случайный приход", "CreateReceipt", "");
+    Menu.AddMenuItem("Приход#Сторно-приход", "CreateReceipt", "Storno");
+    Menu.AddMenuItem("Приход по ASN#Полный приход", "CreateReceipt", "ASN");
+    Menu.AddMenuItem("Приход по ASN#Приход с проблемами", "CreateReceipt",
+        "ASN,Shortage,Overhead,Defect,Mixup");
+    Menu.AddMenuItem("Отгрузка#Заказ по ASN", "CreateOrderPerASN", "");
+    Menu.AddMenuItem("Отгрузка#Подобрать заказ", "CreateDespatch", "Assembly");
+    Menu.AddMenuItem("Отгрузка#Отгрузить заказ", "CreateDespatch", "Finish");
+    Menu.AddMenuItem("Перемещение#Приход под заказ", "CreateReceiptPerPO", "Transfer");
+    Menu.AddMenuItem("Списание#Приход под заказ", "CreateReceiptPerPO", "Offwrite");
+    Menu.AddMenuItem("Изм. характеристик#Приход под заказ", "CreateReceiptPerPO", "Change");
+    Menu.Run();
+}
+```
+
+### Пачковый экспорт с BitBuffer
+
+```eme-l
+ExportAll(Source, Target, Name, RecordObject As "CEMERec", BitBufferFilter As "BitBuffer")
+{
+    Console = Object("Console");
+    Console.Show(1);
+    Console.PutText(tr("Соединяем с внешней базой данных..."));
+
+    m_ERPEngine.SetConsole(Console);
+    Error = m_ERPEngine.Launch(m_ERPEngine.GetConnStr());
+
+    is_do_wait_cursor(1);
+
+    m_ERPEngine.StartPercentage("Читаем из записи \"" +
+        RecordObject.GetRecordName() + "\"", RecordObject.GetNoOfLines());
+    RecordObject.SetFirstLine();
+    Refs = Object("Array");
+    While (GetNextExportBatch(RecordObject, BitBufferFilter, Refs))
+
+        Error = m_ERPEngine.BeginExport(Source, Target, Name);
+        If (Error == "")
+            OldRef = RecordObject.GetLine();
+            Loop (Refs)
+                RecordObject.SetLine(Refs.Get());
+                m_ERPEngine.NextPercentage(RecordObject.GetLine());
+                Error = m_ERPEngine.DoExport(RecordObject);
+                is_peek_all_messages();
+                If (Error != "")
+                    Break
+                End If
+            End Loop
+            RecordObject.SetLine(OldRef);
+        End If
+
+        If (Error == "")
+            Error = m_ERPEngine.EndExport();
+        End If
+        If (Error != "")
+            Break
+        End If
+    End While
+
+    is_do_wait_cursor(-1);
+}
+
+GetNextExportBatch(r_RecordObject As "CEMERec", BitBufferFilter As "BitBuffer", Refs As "Array")
+{
+    Refs.RemoveAll();
+    Count = 0;
+    While (r_RecordObject.IsValidLine())
+        'Проверим фильтр'
+        If (~is_empty(BitBufferFilter))
+            If (~BitBufferFilter.IsHewed(r_RecordObject.GetLine()))
+                r_RecordObject.SetNextLine();
+                Continue;
+            End If
+        End If
+
+        Refs.Add(r_RecordObject.GetLine());
+        r_RecordObject.SetNextLine();
+        Count = Count + 1;
+        If (Count == BATCH_SIZE)
+            Break
+        End If
+    End While
+    Return Refs.GetSize() != 0;
+}
+```
+
+**Ключевые особенности пачкового экспорта:**
+- Используется `BitBuffer` для фильтрации записей (например, только товары из ASN)
+- `BATCH_SIZE` — размер пачки (константа класса)
+- `GetNextExportBatch()` — формирует пачку ссылок с учётом фильтра
+- `is_peek_all_messages()` — обработка окон сообщений внутри цикла
+- `Console` — визуальный прогресс-бар для пользователя
+
+### Создание тестового склада
+
+```eme-l
+CreateTestWarehouse()
+{
+    r_Warehouse = Object("dsDB", "Warehouse");
+    r_Warehouse.SetSkipMode();
+    r_Warehouse.GetBranchRefFld().MustBeRefEQ(is_system(5));
+    r_Warehouse.GetCodeFld().MustBeEQ("TST");
+    r_Warehouse.SetFirstLine();
+
+    If (r_Warehouse.IsValidLine())
+        is_message("CreateTestWarehouse", "Тестовый склад уже есть в БД", "OK", "EXCLAMATION");
+        Return;
+    End If
+
+    r_FindParams = Object("dsDB", "FindParams");
+    r_FindParams.SetSkipMode();
+    r_FindParams.GetCodeFld().MustBeEQ("WH1");
+
+    is_transaction(1, "Создать тестовый склад");
+    r_Warehouse.AppendAndSetLine();
+    r_Warehouse.PutBranchRef(is_system(5));
+    r_Warehouse.PutWarehouseType(1);
+    r_Warehouse.PutCode("TST");
+    r_Warehouse.PutName("Тестовый склад");
+    r_Warehouse.PutKeeperRef(Object("dsDB", "Clients").GetDefaultVendorRefForDocuments());
+    r_Warehouse.PutSSCCPrefix("14600000000");
+    r_Warehouse.SetDefaultInDoc();
+    r_FindParams.SetFirstLine();
+    r_Warehouse.PutFindParamsRef(r_FindParams.GetLine());
+    is_transaction(-1);
+
+    is_message("CreateTestWarehouse", "Создан тестовый склад", "OK", "EXCLAMATION");
+}
+```
 
 ## Связанные классы
 
