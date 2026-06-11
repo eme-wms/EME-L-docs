@@ -19,6 +19,8 @@ sidebar:
 | **Роботы-тестировщики** | `Система → Ресурсы → Тестирование → Робот` | Автоматические тесты классификаторов и операций (CIRobot) |
 | **UI-тест диалогов** | `Система → Ресурсы → Тестирование → Тест интерфейса` | Последовательное открытие всех диалогов (~3 мин) |
 | **Тест целостности БД** | `is_run_dbtest()` | Физический и логический тест структуры базы данных |
+| **SQL-тесты** | `Запросы/Tests.*` | Проверка целостности данных через SQL-запросы |
+| **Тесты браузеров** | `Браузеры/TerminalTester.*` | Табличные представления данных для терминалов |
 | **Общие / ad-hoc** | `Tests.Test`, `Tests.TestUnit` | Разработческие «песочницы», эксперименты, ручные проверки |
 
 ### Сравнение типов тестов
@@ -131,6 +133,61 @@ sidebar:
 | `testRegisters.txt` | `testRegisters` | Фрагментация записи регистров |
 | `testKernelSettings.txt` | `testKernelSettings` | Параметры ядра: архивы, HTTP, DLL, кэш |
 
+### D. SQL-тесты (`Запросы/Tests.*`)
+
+| Файл | Класс | Что проверяет | Тип |
+|------|-------|--------------|-----|
+| `Tests.DupKeys.txt` | `Tests.DupKeys` | Дубли ключевых значений | Целостность |
+| `Tests.DupLotID.txt` | `Tests.DupLotID` | Дубли идентификаторов партий | Целостность |
+| `Tests.DupLotNo.txt` | `Tests.DupLotNo` | Дубли номеров партий | Целостность |
+| `Tests.TestDocLinesDups.txt` | `Tests.TestDocLinesDups` | Дубли строк документов | Целостность |
+| `Tests.TestRegistersDups.txt` | `Tests.TestRegistersDups` | Дубли в регистрах | Целостность |
+| `Tests.TestSpLock.txt` | `Tests.TestSpLock` | Блокировки хранимых процедур | Параллельный доступ |
+| `Tests.TestStoredProcedure.txt` | `Tests.TestStoredProcedure` | Корректность хранимых процедур | Функциональность |
+| `Tests.TestWITH.txt` | `Tests.TestWITH` | CTE-запросы | SQL-функциональность |
+| `Tests.TestGUID.txt` | `Tests.TestGUID` | Уникальность GUID | Целостность |
+| `Tests.ExternalDB.txt` | `Tests.ExternalDB` | Подключение к внешним БД (ODBC) | Интеграция |
+| `Tests.SqlServer.txt` | `Tests.SqlServer` | Специфика SQL Server | Совместимость |
+
+### E. Тесты записей и БД
+
+| Файл | Класс | Что проверяет | Объекты |
+|------|-------|--------------|---------|
+| `TestCEMERec.txt` | `Tests.TestCEMERec` | Базовый класс `CEMERec` | `dsDB` |
+| `TestCEMESkip.txt` | `Tests.TestCEMESkip` | Фильтрация `MustBeEQAbt` | `dsDB` |
+| `TestFindLine.txt` | `Tests.TestFindLine` | Хэшированный поиск | `dsDB` |
+| `TestPickByLine.txt` | `Tests.TestPickByLine` | `GetParamsByTransitOrPBL` | `dsDB` |
+| `TestGoodsItem.txt` | `Tests.TestGoodsItem` | Точность `GoodsItem` | `dsDB` |
+| `TestCommit.txt` | `Tests.TestCommit` | Транзакции (фиксация) | `dsDB` |
+| `TestDBWatch.txt` | `Tests.TestDBWatch` | `DBWatch` (дозор БД) | `DBWatch`, `dsDB` |
+
+### F. Интеграционные тесты
+
+| Файл | Класс | Что проверяет | Внешняя система |
+|------|-------|--------------|-----------------|
+| `TestExternalDB.txt` | `Tests.TestExternalDB` | ODBC-подключение | PostgreSQL, SQL Server, Oracle |
+| `TestHttpsReq.txt` | `Tests.TestHttpsReq` | HTTP(S)-запросы, пагинация | Веб-сервисы, REST API |
+| `TestRPC.txt` | `Tests.TestRPC` | Удалённые вызовы через ФС | Внутренние компоненты |
+| `TestXml.txt` | `Tests.TestXml` | Парсинг XML | ЦБ РФ, XML-сервисы |
+| `TestTranslate.txt` | `Tests.TestTranslate` | Локализация (`tr()`) | Файлы переводов |
+| `TestOrderFrom1C.txt` | `Tests.TestOrderFrom1C` | Импорт заказов | 1С |
+| `TestExportToTHQ.txt` | `Tests.TestExportToTHQ` | Выгрузка в ЦУП | ЦУП |
+
+### G. Роботы-тестировщики
+
+| Файл | Класс | Что проверяет | Тип |
+|------|-------|--------------|-----|
+| `GuideRobots.txt` | `GuideRobots` | Базовая логика классификаторов | Классификаторы |
+| `GoodsItemRobot.txt` | `GoodsItemRobot` | Справочник товаров | Классификаторы |
+| `ClientRobot.txt` | `ClientRobot` | Справочник клиентов | Классификаторы |
+| `WarehouseRobot.txt` | `WarehouseRobot` | Справочник складов | Классификаторы |
+| `INCOMERobot.txt` | `INCOMERobot` | Операция прихода | Операции |
+| `IncomingASNRobot.txt` | `IncomingASNRobot` | Приход по ASN | Операции |
+| `OrdersBatchRobot.txt` | `OrdersBatchRobot` | Отгрузка по заказам | Операции |
+| `ReportsRobots.txt` | `ReportsRobots` | Печатные формы | Отчёты |
+| `RobotOpenDialogs.txt` | `RobotOpenDialogs` | Открытие всех диалогов | UI-тест |
+| `CheckSpeedRobot.txt` | `CheckSpeedRobot` | Скорость операций | Производительность |
+
 ---
 
 ## Навигация по документации
@@ -139,3 +196,9 @@ sidebar:
 - [ERP-тесты](/testing/erp-tests/) — интеграционные тесты обмена с ERP
 - [Самодиагностика](/testing/self-diagnostics/) — система KPI, роботы-тестировщики, UI-тесты, тесты БД
 - [Шаблоны тестов](/testing/templates/) — готовые заготовки для новых тестов
+- [SQL-тесты](/testing/sql-tests/) — проверка целостности данных через SQL-запросы
+- [Тесты записей и БД](/testing/record-tests/) — тестирование CEMERec, CEMESkip, DBWatch, транзакций
+- [Интеграционные тесты](/testing/integration-tests/) — HTTP, RPC, XML, внешние БД, 1С
+- [Роботы-тестировщики](/testing/robot-tests/) — автоматические тесты классификаторов и операций
+- [Тесты браузеров](/testing/browser-tests/) — браузеры терминалов и интерфейсные тесты
+- [Прочие тесты](/testing/misc-tests/) — изображения, ошибки, стресс-тесты, ВЕТИС, EANCOM, Диадок
