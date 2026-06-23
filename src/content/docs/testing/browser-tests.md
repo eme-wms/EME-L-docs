@@ -27,14 +27,14 @@ sidebar:
 Проверяет отображение и выбор предварительных уведомлений о поставке (ASN) на терминале.
 
 ```EME-L
-' Открываем браузер ASN на терминале
+'Открываем браузер ASN на терминале'
 Browser = Object("Browser", "TerminalTester.BrowserASN")
 Browser.Run()
 
-' Применяем фильтр по дате
+'Применяем фильтр по дате'
 Browser.SetFilter("DocDate", is_dos_date())
 
-' Выбираем первую строку
+'Выбираем первую строку'
 If (Browser.GetNoOfLines() > 0)
     Browser.SetLine(0)
     ASNRef = Browser.GetSelectedLine()
@@ -49,13 +49,13 @@ End If
 Проверяет отображение партий (batch/lot) на терминале. Критично для операций приёмки и отгрузки, где требуется выбор конкретной партии товара.
 
 ```EME-L
-' Браузер партий для терминала
+'Браузер партий для терминала'
 Browser = Object("Browser", "TerminalTester.BrowserBatch")
 Browser.SetFilter("GoodsItemRef", GoodsItemRef)
 Browser.Run()
 
 If (Browser.GetNoOfLines() > 0)
-    ' Выбираем партию с наибольшим остатком
+    'Выбираем партию с наибольшим остатком'
     Browser.SetLine(0)
     BatchRef = Browser.GetSelectedLine()
     is_message("BrowserBatch", "Выбрана партия: " + BatchRef, "OK", "INFORMATION")
@@ -69,7 +69,7 @@ End If
 Проверяет работу с коробами (упаковками) на терминале. Используется для операций, связанных с мультиканальностью и упаковкой товаров.
 
 ```EME-L
-' Браузер коробов
+'Браузер коробов'
 Browser = Object("Browser", "TerminalTester.BrowserBox")
 Browser.SetFilter("Status", "Available")
 Browser.Run()
@@ -85,14 +85,14 @@ is_message("BrowserBox", "Доступно коробов: " + BoxCount, "OK", "
 Проверяет отображение ячеек хранения на терминале. Критично для операций размещения и подбора.
 
 ```EME-L
-' Браузер ячеек для размещения
+'Браузер ячеек для размещения'
 Browser = Object("Browser", "TerminalTester.BrowserCell")
 Browser.SetFilter("WarehouseRef", WarehouseRef)
 Browser.SetFilter("ZoneRef", ZoneRef)
 Browser.Run()
 
 If (Browser.GetNoOfLines() > 0)
-    ' Выбираем ячейку для размещения
+    'Выбираем ячейку для размещения'
     Browser.SetLine(0)
     CellRef = Browser.GetSelectedLine()
     is_message("BrowserCell", "Выбрана ячейка: " + CellRef, "OK", "INFORMATION")
@@ -106,12 +106,12 @@ End If
 Проверяет отображение списка товаров на терминале. Самый часто используемый браузер в операциях склада.
 
 ```EME-L
-' Браузер товаров для терминала
+'Браузер товаров для терминала'
 Browser = Object("Browser", "TerminalTester.BrowserGood")
 Browser.SetFilter("WarehouseRef", WarehouseRef)
 Browser.Run()
 
-' Выбираем товар по штрих-коду
+'Выбираем товар по штрих-коду'
 Barcode = is_input("Отсканируйте штрих-код:", "", "Товар")
 Browser.SetFilter("BarCode", Barcode)
 
@@ -131,7 +131,7 @@ End If
 Проверяет отображение заданий на инвентаризацию на терминале.
 
 ```EME-L
-' Браузер заданий инвентаризации
+'Браузер заданий инвентаризации'
 Browser = Object("Browser", "TerminalTester.BrowserInventory")
 Browser.SetFilter("Status", "Open")
 Browser.Run()
@@ -147,7 +147,7 @@ is_message("BrowserInventory", "Открытых заданий: " + InvCount, "
 Проверяет работу с кодами SSCC (Serial Shipping Container Code) на терминале.
 
 ```EME-L
-' Браузер SSCC
+'Браузер SSCC'
 Browser = Object("Browser", "TerminalTester.BrowserSSCC")
 Browser.SetFilter("WarehouseRef", WarehouseRef)
 Browser.Run()
@@ -166,7 +166,7 @@ End If
 Проверяет отображение документов отгрузки на терминале.
 
 ```EME-L
-' Браузер отгрузок
+'Браузер отгрузок'
 Browser = Object("Browser", "TerminalTester.BrowserShipments")
 Browser.SetFilter("DocDate", is_dos_date())
 Browser.SetFilter("Status", "Ready")
@@ -183,7 +183,7 @@ is_message("BrowserShipments", "Готовых к отгрузке: " + ShipCoun
 Проверяет отображение списка сотрудников на терминале. Используется для привязки операций к исполнителям.
 
 ```EME-L
-' Браузер сотрудников
+'Браузер сотрудников'
 Browser = Object("Browser", "TerminalTester.BrowserStaff")
 Browser.SetFilter("IsActive", TRUE)
 Browser.Run()
@@ -199,7 +199,7 @@ is_message("BrowserStaff", "Активных сотрудников: " + StaffCo
 Проверяет отображение заданий на перемещение товаров.
 
 ```EME-L
-' Браузер перемещений
+'Браузер перемещений'
 Browser = Object("Browser", "TerminalTester.BrowserMove")
 Browser.SetFilter("Status", "Open")
 Browser.Run()
@@ -245,7 +245,7 @@ is_message("BrowserMove", "Открытых перемещений: " + MoveCoun
 Проверяет все аспекты работы браузеров: открытие, фильтрацию, сортировку, выбор, пагинацию.
 
 ```EME-L
-' Полный тест браузера
+'Полный тест браузера'
 RobotInter.brwFullTest
 ************************             Флаги             ************************
 ДЛ: Нет
@@ -256,32 +256,32 @@ RobotInter.brwFullTest
 ************************             Методы            ************************
 RunTest()
 {
-    ' Открываем браузер
+    'Открываем браузер'
     Browser = Object("Browser", "GoodsItemBrowser")
     Browser.Run()
 
-    ' Проверяем количество строк
+    'Проверяем количество строк'
     TotalLines = Browser.GetNoOfLines()
     is_message("brwFullTest", "Всего строк: " + TotalLines, "OK", "INFORMATION")
 
-    ' Применяем фильтр
+    'Применяем фильтр'
     Browser.SetFilter("Code", "TEST")
     FilteredLines = Browser.GetNoOfLines()
     is_message("brwFullTest", "После фильтра: " + FilteredLines, "OK", "INFORMATION")
 
-    ' Сбрасываем фильтр
+    'Сбрасываем фильтр'
     Browser.ResetFilter()
     ResetLines = Browser.GetNoOfLines()
     is_message("brwFullTest", "После сброса: " + ResetLines, "OK", "INFORMATION")
 
-    ' Проверяем сортировку
+    'Проверяем сортировку'
     Browser.Sort("Name", TRUE)
     is_message("brwFullTest", "Сортировка по имени (ASC)", "OK", "INFORMATION")
 
     Browser.Sort("Name", FALSE)
     is_message("brwFullTest", "Сортировка по имени (DESC)", "OK", "INFORMATION")
 
-    ' Выбираем строку
+    'Выбираем строку'
     If (Browser.GetNoOfLines() > 0)
         Browser.SetLine(0)
         SelectedRef = Browser.GetSelectedLine()
@@ -297,7 +297,7 @@ RunTest()
 Проверяет корректность поведения браузера при отсутствии данных (пустой результат).
 
 ```EME-L
-' Тест пустого браузера
+'Тест пустого браузера'
 TestAbsent.Browser
 ************************             Флаги             ************************
 ДЛ: Нет
@@ -308,7 +308,7 @@ TestAbsent.Browser
 ************************             Методы            ************************
 RunTest()
 {
-    ' Устанавливаем фильтр, который точно ничего не найдёт
+    'Устанавливаем фильтр, который точно ничего не найдёт'
     Browser = Object("Browser", "GoodsItemBrowser")
     Browser.SetFilter("Code", "NONEXISTENT_CODE_99999")
     Browser.Run()
@@ -328,7 +328,7 @@ RunTest()
 Проверяет отображение и выбор шаблонов заданий для терминалов.
 
 ```EME-L
-' Браузер шаблонов заданий
+'Браузер шаблонов заданий'
 Browser = Object("Browser", "ProcessTaskTemplates.BrowserRobot")
 Browser.SetFilter("IsActive", TRUE)
 Browser.Run()
@@ -344,7 +344,7 @@ is_message("BrowserRobot", "Доступно шаблонов: " + TemplateCount
 Проверяет отображение ячеек внутри конкретной зоны склада.
 
 ```EME-L
-' Браузер ячеек зоны
+'Браузер ячеек зоны'
 Browser = Object("Browser", "Zone.RobotCells")
 Browser.SetFilter("ZoneRef", ZoneRef)
 Browser.Run()
@@ -370,21 +370,21 @@ Tests.TestMyBrowser
 ************************             Методы            ************************
 RunTest()
 {
-    ' Создаём браузер
+    'Создаём браузер'
     Browser = Object("Browser", "MyBrowser")
 
-    ' Устанавливаем фильтры
+    'Устанавливаем фильтры'
     Browser.SetFilter("Field1", Value1)
     Browser.SetFilter("Field2", Value2)
 
-    ' Запускаем браузер
+    'Запускаем браузер'
     Browser.Run()
 
-    ' Проверяем результаты
+    'Проверяем результаты'
     LineCount = Browser.GetNoOfLines()
     is_message("TestMyBrowser", "Найдено строк: " + LineCount, "OK", "INFORMATION")
 
-    ' Выбираем строку
+    'Выбираем строку'
     If (LineCount > 0)
         Browser.SetLine(0)
         SelectedRef = Browser.GetSelectedLine()
