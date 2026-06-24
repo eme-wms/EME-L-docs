@@ -209,14 +209,14 @@ UI-тест также выполняет проверку полей, испо�
 
 ```eme-l
 'Проверить совместимость метапроекта с данными'
-Missing = Object("Array")
-TypeErrors = Object("Array")
-Dups = Object("Array")
-is_lost_fields(Missing, TypeErrors, Dups)
+Missing = Object("Array");
+TypeErrors = Object("Array");
+Dups = Object("Array");
+is_lost_fields(Missing, TypeErrors, Dups);
 
 'Если Missing не пуст — есть отсутствующие поля'
 If (Missing.GetSize() > 0)
-    is_error(1, "Обнаружены несоответствия метапроекта")
+    is_error(1, "Обнаружены несоответствия метапроекта");
 End If
 ```
 
@@ -249,7 +249,7 @@ End If
 
 ```eme-l
 'Запустить робота для тестирования диалогов'
-is_run_robot("RobotOpenDialogs", 1000, 600, 0)
+is_run_robot("RobotOpenDialogs", 1000, 600, 0);
 ```
 
 | Параметр | Описание |
@@ -275,10 +275,10 @@ is_run_robot("RobotOpenDialogs", 1000, 600, 0)
 
 ```eme-l
 'Полный тест целостности (физический + логический)'
-Result = is_run_dbtest()
+Result = is_run_dbtest();
 
 'Только физический тест для записи 10'
-Result = is_run_dbtest(1, 10)
+Result = is_run_dbtest(1, 10);
 ```
 
 | Параметр | Описание |
@@ -293,10 +293,10 @@ Result = is_run_dbtest(1, 10)
 
 ```eme-l
 'Проверить счётчики ссылок для всех записей'
-is_test_references_counter()
+is_test_references_counter();
 
 'Проверить диапазон записей 10-50'
-is_test_references_counter(10, 50)
+is_test_references_counter(10, 50);
 ```
 
 Проверяет целостность счётчиков ссылок между записями — ключевой тест для выявления «висячих» ссылок.
@@ -405,10 +405,10 @@ Do2()
 
 ```eme-l
 'Тест целостности таблицы размещения (по умолчанию)'
-is_vfs_test()
+is_vfs_test();
 
 'Запустить конкретный тест №5'
-is_vfs_test(5)
+is_vfs_test(5);
 ```
 
 | Параметр | Описание |
@@ -423,7 +423,7 @@ is_vfs_test(5)
 
 ```eme-l
 'Выполнить тест блочной записи'
-is_test_block_write(1, 1, 100, 10, headersArray, calcResults)
+is_test_block_write(1, 1, 100, 10, headersArray, calcResults);
 ```
 
 Тестирует режим пакетной (блочной) записи в базу данных — оптимизацию для массовых операций вставки.
@@ -466,7 +466,7 @@ result = is_test_email_message(
     FALSE,                  'FALSE = plain text, TRUE = HTML'
     "",                     'путь к вложению'
     FALSE                   'FALSE = синхронно, TRUE = асинхронно'
-)
+);
 'result = 1 при успешной отправке'
 ```
 
