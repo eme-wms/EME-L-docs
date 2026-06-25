@@ -59,6 +59,10 @@ export default defineConfig({
           items: [{ autogenerate: { directory: "language/advanced" } }],
         },
         {
+          label: "Язык EME-L — Классы",
+          items: [{ autogenerate: { directory: "language/classes" } }],
+        },
+        {
           label: "Архитектура",
           items: [{ autogenerate: { directory: "architecture" } }],
         },
