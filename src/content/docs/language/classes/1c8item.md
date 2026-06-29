@@ -1,7 +1,7 @@
 ---
 title: "Класс 1C8Item"
 sidebar:
-  order: 4
+  order: 2
 ---
 
 # Класс 1C8Item

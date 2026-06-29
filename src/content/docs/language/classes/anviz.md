@@ -1,7 +1,7 @@
 ---
 title: "Класс Anviz"
 sidebar:
-  order: 5
+  order: 4
 ---
 
 # Класс Anviz

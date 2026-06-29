@@ -1,7 +1,7 @@
 ---
 title: "Класс File"
 sidebar:
-  order: 1
+  order: 37
 ---
 
 # Класс File
