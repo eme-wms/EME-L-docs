@@ -7,3 +7,6 @@ dist/
 .DS_Store
 Thumbs.db
 *.tgz
+
+# Claude Code (agent memory and local working artifacts)
+.claude/
