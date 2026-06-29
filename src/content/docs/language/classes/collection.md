@@ -10,7 +10,7 @@ sidebar:
 
 Объект класса `Collection` создаётся через `Object()`. Коллекция может передавать свой контекст выполнения в конструкторы объектов, создаваемых методом `Put`, — это полезно, когда вложенные объекты должны разделять с вызывающим скриптом состояние транзакций, соединений с БД и т. п.
 
-> **Примечание:** класс `Collection` не имеет записи `REGISTRY_EMEL_CLASS` в `CEMEPrj.cpp` — описание черпается из блока `BEGIN_IMPLEMENT` файла `i_Collection.cpp`. Класс зарегистрирован как встроенный, имя скрипта `Collection` подтверждается реальными вызовами `Object("Collection")` в кодовой базе.
+> **Примечание:** регистрация `REGISTRY_EMEL_CLASS(Collection, …)` находится в `p_System.cpp` (а не в `CEMEPrj.cpp`, где держится основная масса классов); описание черпается из неё и из блока `BEGIN_IMPLEMENT` файла `i_Collection.cpp`. Имя скрипта `Collection` подтверждается реальными вызовами `Object("Collection")` в кодовой базе.
 
 ## Создание объекта
 
@@ -85,8 +85,8 @@ objCol = Object("Collection", Context);
 'Создать коллекцию для хранения пунктов меню'
 m_MenuCollection = Object("Collection");
 
-'Добавить объект Menu под именем "root#" — коллекция владеет объектом'
-SubMenu = m_MenuCollection.Put("root#", "Menu", TRUE);
+'Добавить объект Menu под именем "root#" — коллекция автоматически владеет созданным объектом'
+SubMenu = m_MenuCollection.Put("root#", "Menu");
 
 'Получить объект обратно по имени'
 RootMenu As "Menu" = m_MenuCollection.Get("root#");
@@ -121,5 +121,6 @@ End If
 
 ## См. также
 
-- [Класс Array](./arrayofobjects/) — массив объектов и данных произвольного типа.
-- [Класс Map](../basics/system-functions/) — ассоциативный массив «ключ → значение».
+- [Класс Array](./array/) — динамический массив произвольных типов.
+- [Класс ArrayOfObjects](./arrayofobjects/) — массив объектов с управлением временем жизни.
+- [Класс DataStorage](./datastorage/) — бинарное хранилище данных.
