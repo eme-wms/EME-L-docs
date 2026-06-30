@@ -1,7 +1,7 @@
 ---
 title: "Класс TimerThread"
 sidebar:
-  order: 67.5
+  order: 108
 ---
 
 # Класс TimerThread

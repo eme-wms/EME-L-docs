@@ -1,7 +1,7 @@
 ---
 title: "Класс Legend"
 sidebar:
-  order: 75
+  order: 68
 ---
 
 # Класс Legend

@@ -1,7 +1,7 @@
 ---
 title: "Класс BitBuffer"
 sidebar:
-  order: 9.5
+  order: 10
 ---
 
 # Класс BitBuffer

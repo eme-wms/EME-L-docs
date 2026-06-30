@@ -1,7 +1,7 @@
 ---
 title: "Класс Parameters"
 sidebar:
-  order: 84
+  order: 77
 ---
 
 # Класс Parameters

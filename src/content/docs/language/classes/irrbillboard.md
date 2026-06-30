@@ -1,7 +1,7 @@
 ---
 title: "Класс IrrBillboard"
 sidebar:
-  order: 51
+  order: 52
 ---
 
 # Класс IrrBillboard

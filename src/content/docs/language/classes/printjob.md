@@ -1,7 +1,7 @@
 ---
 title: "Класс PrintJob"
 sidebar:
-  order: 86
+  order: 79
 ---
 
 # Класс PrintJob

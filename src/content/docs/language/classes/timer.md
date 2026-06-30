@@ -1,7 +1,7 @@
 ---
 title: "Класс Timer"
 sidebar:
-  order: 105.8
+  order: 106
 ---
 
 # Класс Timer

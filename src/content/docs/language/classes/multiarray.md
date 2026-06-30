@@ -1,7 +1,7 @@
 ---
 title: "Класс MultiArray"
 sidebar:
-  order: 82
+  order: 75
 ---
 
 # Класс MultiArray

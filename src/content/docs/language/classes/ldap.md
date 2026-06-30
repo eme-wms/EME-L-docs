@@ -1,7 +1,7 @@
 ---
 title: "Класс LDAP"
 sidebar:
-  order: 74
+  order: 67
 ---
 
 # Класс LDAP

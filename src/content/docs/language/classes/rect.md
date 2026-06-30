@@ -1,7 +1,7 @@
 ---
 title: "Класс Rect"
 sidebar:
-  order: 94
+  order: 87
 ---
 
 # Класс Rect

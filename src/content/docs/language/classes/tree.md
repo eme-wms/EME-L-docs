@@ -1,7 +1,7 @@
 ---
 title: "Класс Tree"
 sidebar:
-  order: 19.5
+  order: 112
 ---
 
 # Класс Tree

@@ -1,7 +1,7 @@
 ---
 title: "Класс IrrSprite"
 sidebar:
-  order: 68
+  order: 61
 ---
 
 # Класс IrrSprite

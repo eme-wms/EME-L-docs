@@ -1,7 +1,7 @@
 ---
 title: "Класс Robot"
 sidebar:
-  order: 100
+  order: 93
 ---
 
 # Класс Robot

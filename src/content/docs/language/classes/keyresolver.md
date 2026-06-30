@@ -1,7 +1,7 @@
 ---
 title: "Класс KeyResolver"
 sidebar:
-  order: 73
+  order: 66
 ---
 
 # Класс KeyResolver

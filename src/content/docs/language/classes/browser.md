@@ -1,7 +1,7 @@
 ---
 title: "Класс Browser"
 sidebar:
-  order: 10
+  order: 11
 ---
 
 # Класс Browser

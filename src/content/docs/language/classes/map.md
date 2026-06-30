@@ -1,7 +1,7 @@
 ---
 title: "Класс Map"
 sidebar:
-  order: 76
+  order: 69
 ---
 
 # Класс Map

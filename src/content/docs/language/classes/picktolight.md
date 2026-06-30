@@ -1,7 +1,7 @@
 ---
 title: "Класс PickToLight"
 sidebar:
-  order: 105
+  order: 78
 ---
 
 # Класс PickToLight

@@ -1,7 +1,7 @@
 ---
 title: "Класс IrrDevice"
 sidebar:
-  order: 53
+  order: 54
 ---
 
 # Класс IrrDevice

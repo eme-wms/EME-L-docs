@@ -1,7 +1,7 @@
 ---
 title: "Класс MemoryLeaks"
 sidebar:
-  order: 78
+  order: 71
 ---
 
 # Класс MemoryLeaks

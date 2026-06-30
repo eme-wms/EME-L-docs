@@ -1,7 +1,7 @@
 ---
 title: "Класс System"
 sidebar:
-  order: 104
+  order: 101
 ---
 
 # Класс System

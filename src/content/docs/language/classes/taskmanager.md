@@ -1,7 +1,7 @@
 ---
 title: "Класс TaskManager"
 sidebar:
-  order: 67
+  order: 104
 ---
 
 # Класс TaskManager

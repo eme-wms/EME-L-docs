@@ -1,7 +1,7 @@
 ---
 title: "Класс StringBuilder"
 sidebar:
-  order: 63
+  order: 100
 ---
 
 # Класс StringBuilder

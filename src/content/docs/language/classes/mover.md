@@ -1,7 +1,7 @@
 ---
 title: "Класс Mover"
 sidebar:
-  order: 81
+  order: 74
 ---
 
 # Класс Mover

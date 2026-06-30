@@ -1,7 +1,7 @@
 ---
 title: "Класс FreeBrowser"
 sidebar:
-  order: 40
+  order: 41
 ---
 
 # Класс FreeBrowser

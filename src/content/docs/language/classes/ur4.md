@@ -1,7 +1,7 @@
 ---
 title: "Класс UR4"
 sidebar:
-  order: 107.5
+  order: 114
 ---
 
 # Класс UR4

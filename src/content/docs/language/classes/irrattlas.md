@@ -1,7 +1,7 @@
 ---
 title: "Класс IrrAtlas"
 sidebar:
-  order: 50
+  order: 51
 ---
 
 # Класс IrrAtlas

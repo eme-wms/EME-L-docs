@@ -1,7 +1,7 @@
 ---
 title: "Класс RemoteDialog"
 sidebar:
-  order: 97
+  order: 90
 ---
 
 # Класс RemoteDialog

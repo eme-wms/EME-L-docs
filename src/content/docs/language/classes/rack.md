@@ -1,7 +1,7 @@
 ---
 title: "Класс Rack"
 sidebar:
-  order: 89
+  order: 82
 ---
 
 # Класс Rack

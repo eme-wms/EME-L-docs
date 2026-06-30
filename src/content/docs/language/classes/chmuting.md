@@ -1,7 +1,7 @@
 ---
 title: "Класс Chmuting"
 sidebar:
-  order: 12
+  order: 13
 ---
 
 # Класс Chmuting

@@ -1,7 +1,7 @@
 ---
 title: "Класс Versions"
 sidebar:
-  order: 105.2
+  order: 117
 ---
 
 # Класс Versions

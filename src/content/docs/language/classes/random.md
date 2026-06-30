@@ -1,7 +1,7 @@
 ---
 title: "Класс Random"
 sidebar:
-  order: 90
+  order: 83
 ---
 
 # Класс Random

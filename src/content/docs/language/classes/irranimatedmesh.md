@@ -1,7 +1,7 @@
 ---
 title: "Класс IrrAnimatedMesh"
 sidebar:
-  order: 49
+  order: 50
 ---
 
 # Класс IrrAnimatedMesh

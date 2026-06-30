@@ -1,7 +1,7 @@
 ---
 title: "Класс Collection"
 sidebar:
-  order: 14
+  order: 15
 ---
 
 # Класс Collection

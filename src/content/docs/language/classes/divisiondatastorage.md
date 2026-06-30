@@ -1,7 +1,7 @@
 ---
 title: "Класс DivisionDataStorage"
 sidebar:
-  order: 31
+  order: 32
 ---
 
 # Класс DivisionDataStorage

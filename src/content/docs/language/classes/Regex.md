@@ -1,7 +1,7 @@
 ---
 title: "Класс Regex"
 sidebar:
-  order: 95
+  order: 88
 ---
 
 # Класс Regex

@@ -1,7 +1,7 @@
 ---
 title: "Класс CubiScan"
 sidebar:
-  order: 20
+  order: 21
 ---
 
 # Класс CubiScan

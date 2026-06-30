@@ -1,7 +1,7 @@
 ---
 title: "Класс Dialog"
 sidebar:
-  order: 30
+  order: 31
 ---
 
 # Класс Dialog

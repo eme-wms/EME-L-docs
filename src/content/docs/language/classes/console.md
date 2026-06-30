@@ -1,7 +1,7 @@
 ---
 title: "Класс Console"
 sidebar:
-  order: 15
+  order: 16
 ---
 
 # Класс Console

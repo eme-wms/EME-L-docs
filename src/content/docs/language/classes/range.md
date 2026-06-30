@@ -1,7 +1,7 @@
 ---
 title: "Класс Range"
 sidebar:
-  order: 91
+  order: 84
 ---
 
 # Класс Range

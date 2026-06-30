@@ -1,7 +1,7 @@
 ---
 title: "Класс IrrLight"
 sidebar:
-  order: 55
+  order: 56
 ---
 
 # Класс IrrLight

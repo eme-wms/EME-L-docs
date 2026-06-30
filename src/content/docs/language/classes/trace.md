@@ -1,7 +1,7 @@
 ---
 title: "Класс Trace"
 sidebar:
-  order: 108.5
+  order: 109
 ---
 
 # Класс Trace

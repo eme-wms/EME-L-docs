@@ -1,7 +1,7 @@
 ---
 title: "Класс DBTruncator"
 sidebar:
-  order: 26
+  order: 27
 ---
 
 # Класс DBTruncator

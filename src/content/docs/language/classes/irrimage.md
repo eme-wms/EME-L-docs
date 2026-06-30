@@ -1,7 +1,7 @@
 ---
 title: "Класс IrrImage"
 sidebar:
-  order: 54
+  order: 55
 ---
 
 # Класс IrrImage

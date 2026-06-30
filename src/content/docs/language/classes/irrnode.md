@@ -1,7 +1,7 @@
 ---
 title: "Класс IrrNode"
 sidebar:
-  order: 58
+  order: 59
 ---
 
 # Класс IrrNode

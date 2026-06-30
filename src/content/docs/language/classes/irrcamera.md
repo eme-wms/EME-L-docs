@@ -1,7 +1,7 @@
 ---
 title: "Класс IrrCamera"
 sidebar:
-  order: 52
+  order: 53
 ---
 
 # Класс IrrCamera

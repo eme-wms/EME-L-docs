@@ -1,7 +1,7 @@
 ---
 title: "Класс Items"
 sidebar:
-  order: 70
+  order: 63
 ---
 
 # Класс Items

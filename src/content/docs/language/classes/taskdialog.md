@@ -1,7 +1,7 @@
 ---
 title: "Класс TaskDialog"
 sidebar:
-  order: 66
+  order: 103
 ---
 
 # Класс TaskDialog

@@ -1,7 +1,7 @@
 ---
 title: "Класс SmartPointer"
 sidebar:
-  order: 61
+  order: 98
 ---
 
 # Класс SmartPointer

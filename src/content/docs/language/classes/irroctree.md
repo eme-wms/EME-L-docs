@@ -1,7 +1,7 @@
 ---
 title: "Класс IrrOctree"
 sidebar:
-  order: 59
+  order: 60
 ---
 
 # Класс IrrOctree

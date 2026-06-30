@@ -1,7 +1,7 @@
 ---
 title: "Класс CryptoPro"
 sidebar:
-  order: 18
+  order: 19
 ---
 
 # Класс CryptoPro

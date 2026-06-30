@@ -1,7 +1,7 @@
 ---
 title: "Класс Control"
 sidebar:
-  order: 17
+  order: 18
 ---
 
 # Класс Control

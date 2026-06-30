@@ -1,7 +1,7 @@
 ---
 title: "Класс Menu"
 sidebar:
-  order: 79
+  order: 72
 ---
 
 # Класс Menu

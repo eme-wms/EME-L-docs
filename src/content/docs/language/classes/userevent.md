@@ -1,7 +1,7 @@
 ---
 title: "Класс UserEvent"
 sidebar:
-  order: 104.5
+  order: 115
 ---
 
 # Класс UserEvent

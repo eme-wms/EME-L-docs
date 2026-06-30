@@ -1,7 +1,7 @@
 ---
 title: "Класс Trassir"
 sidebar:
-  order: 106.5
+  order: 111
 ---
 
 # Класс Trassir

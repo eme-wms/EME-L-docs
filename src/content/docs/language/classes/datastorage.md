@@ -1,7 +1,7 @@
 ---
 title: "Класс DataStorage"
 sidebar:
-  order: 21
+  order: 22
 ---
 
 # Класс DataStorage

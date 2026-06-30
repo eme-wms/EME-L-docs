@@ -1,7 +1,7 @@
 ---
 title: "Класс TimerParallel"
 sidebar:
-  order: 106.1
+  order: 107
 ---
 
 # Класс TimerParallel

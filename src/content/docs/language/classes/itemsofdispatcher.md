@@ -1,7 +1,7 @@
 ---
 title: "Класс ItemsOfDispatcher"
 sidebar:
-  order: 71
+  order: 64
 ---
 
 # Класс ItemsOfDispatcher

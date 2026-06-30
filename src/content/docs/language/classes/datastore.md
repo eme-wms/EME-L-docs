@@ -1,7 +1,7 @@
 ---
 title: "Класс DataStore"
 sidebar:
-  order: 22
+  order: 23
 ---
 
 # Класс DataStore

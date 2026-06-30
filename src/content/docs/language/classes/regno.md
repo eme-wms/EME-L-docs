@@ -1,7 +1,7 @@
 ---
 title: "Класс RegNo"
 sidebar:
-  order: 96
+  order: 89
 ---
 
 # Класс RegNo

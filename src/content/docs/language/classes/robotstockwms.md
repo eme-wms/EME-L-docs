@@ -1,7 +1,7 @@
 ---
 title: "Класс RobotStockWMS"
 sidebar:
-  order: 101
+  order: 94
 ---
 
 # Класс RobotStockWMS

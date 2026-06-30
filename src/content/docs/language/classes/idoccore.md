@@ -1,7 +1,7 @@
 ---
 title: "Класс IDocCore"
 sidebar:
-  order: 47
+  order: 48
 ---
 
 # Класс IDocCore

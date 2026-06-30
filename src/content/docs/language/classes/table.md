@@ -1,7 +1,7 @@
 ---
 title: "Класс Table"
 sidebar:
-  order: 30.5
+  order: 102
 ---
 
 # Класс Table

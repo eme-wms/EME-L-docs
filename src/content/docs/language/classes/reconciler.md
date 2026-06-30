@@ -1,7 +1,7 @@
 ---
 title: "Класс Reconciler"
 sidebar:
-  order: 93
+  order: 86
 ---
 
 # Класс Reconciler

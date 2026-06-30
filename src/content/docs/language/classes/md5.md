@@ -1,7 +1,7 @@
 ---
 title: "Класс MD5"
 sidebar:
-  order: 46
+  order: 70
 ---
 
 # Класс MD5

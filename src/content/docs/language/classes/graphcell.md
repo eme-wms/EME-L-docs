@@ -1,7 +1,7 @@
 ---
 title: "Класс GraphCell"
 sidebar:
-  order: 42
+  order: 43
 ---
 
 # Класс GraphCell

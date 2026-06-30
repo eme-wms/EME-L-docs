@@ -1,7 +1,7 @@
 ---
 title: "Класс DeliveryDaysMap"
 sidebar:
-  order: 28
+  order: 29
 ---
 
 # Класс DeliveryDaysMap

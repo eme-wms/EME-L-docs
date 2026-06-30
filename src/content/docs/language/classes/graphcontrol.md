@@ -1,7 +1,7 @@
 ---
 title: "Класс GraphControl"
 sidebar:
-  order: 43
+  order: 44
 ---
 
 # Класс GraphControl

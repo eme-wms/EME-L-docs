@@ -1,7 +1,7 @@
 ---
 title: "Класс Installer"
 sidebar:
-  order: 48
+  order: 49
 ---
 
 # Класс Installer

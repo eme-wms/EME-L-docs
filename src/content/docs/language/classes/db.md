@@ -1,7 +1,7 @@
 ---
 title: "Класс DB"
 sidebar:
-  order: 23
+  order: 24
 ---
 
 # Класс DB

@@ -1,7 +1,7 @@
 ---
 title: "Класс Set"
 sidebar:
-  order: 60
+  order: 97
 ---
 
 # Класс Set

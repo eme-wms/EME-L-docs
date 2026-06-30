@@ -1,7 +1,7 @@
 ---
 title: "Класс Semaphore"
 sidebar:
-  order: 102
+  order: 95
 ---
 
 # Класс Semaphore

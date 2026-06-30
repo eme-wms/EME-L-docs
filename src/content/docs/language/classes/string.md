@@ -1,7 +1,7 @@
 ---
 title: "Класс String"
 sidebar:
-  order: 62
+  order: 99
 ---
 
 # Класс String

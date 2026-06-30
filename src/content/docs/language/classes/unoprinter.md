@@ -1,7 +1,7 @@
 ---
 title: "Класс UnoPrinter"
 sidebar:
-  order: 107.0
+  order: 113
 ---
 
 # Класс UnoPrinter

@@ -1,7 +1,7 @@
 ---
 title: "Класс Diagram"
 sidebar:
-  order: 29
+  order: 30
 ---
 
 # Класс Diagram

@@ -1,7 +1,7 @@
 ---
 title: "Класс Hew"
 sidebar:
-  order: 45
+  order: 46
 ---
 
 # Класс Hew

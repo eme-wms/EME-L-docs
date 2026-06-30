@@ -1,7 +1,7 @@
 ---
 title: "Класс Translator"
 sidebar:
-  order: 64.5
+  order: 110
 ---
 
 # Класс Translator

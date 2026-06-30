@@ -1,7 +1,7 @@
 ---
 title: "Класс Query"
 sidebar:
-  order: 88
+  order: 81
 ---
 
 # Класс Query

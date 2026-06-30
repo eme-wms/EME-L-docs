@@ -1,7 +1,7 @@
 ---
 title: "Класс PropertyTree"
 sidebar:
-  order: 87
+  order: 80
 ---
 
 # Класс PropertyTree

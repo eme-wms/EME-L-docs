@@ -1,7 +1,7 @@
 ---
 title: "Класс DSigXML"
 sidebar:
-  order: 32
+  order: 33
 ---
 
 # Класс DSigXML

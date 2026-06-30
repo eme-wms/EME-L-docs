@@ -1,7 +1,7 @@
 ---
 title: "Класс VendorEnhancement"
 sidebar:
-  order: 28.5
+  order: 116
 ---
 
 # Класс VendorEnhancement

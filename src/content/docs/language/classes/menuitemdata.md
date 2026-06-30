@@ -1,7 +1,7 @@
 ---
 title: "Класс MenuItemData"
 sidebar:
-  order: 80
+  order: 73
 ---
 
 # Класс MenuItemData

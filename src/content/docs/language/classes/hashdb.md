@@ -1,7 +1,7 @@
 ---
 title: "Класс HashDB"
 sidebar:
-  order: 44
+  order: 45
 ---
 
 # Класс HashDB
