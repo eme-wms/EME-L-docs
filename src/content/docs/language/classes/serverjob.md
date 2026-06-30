@@ -49,7 +49,7 @@ objJob = Object("ServerJob", "192.168.1.100", 8080, 8081);
 | Метод | Аргументы | Возвращает | Описание |
 |-------|-----------|------------|----------|
 | `SetTimeout(arg0)` | arg0: Integer | Empty | Таймаут запросов к серверу в миллисекундах. По умолчанию 5000 мс. |
-| `SendJob(arg0, arg1, arg2, arg3, arg4[, argN…])` | arg0: String (тип), arg1: String (имя), arg2: Parameters (необязательный), arg3: String (класс), arg4: String (метод), argN: произвольный | Integer | Отправляет задание в очередь. Возвращает идентификатор: чётный для REPORT, нечётный для TRANSACTION. -1 при ошибке отправки. |
+| `SendJob(arg0, arg1, arg2, arg3, arg4[, argN…])` | arg0: String (тип), arg1: String (имя), arg2: Parameters (необязательный), arg3: String (класс), arg4: String (метод), argN: произвольный | Integer | Отправляет задание в очередь. Возвращает идентификатор: чётный для REPORT, нечётный для TRANSACTION. -1 при ошибке отправки. Минимальное число аргументов — 5 (тип, имя, класс, метод и хотя бы ноль аргументов вызова); при `argn < 4` ядро генерирует «слишком мало аргументов». |
 
 ### Тип задания (первый аргумент SendJob)
 
@@ -78,7 +78,7 @@ objJob = Object("ServerJob", "192.168.1.100", 8080, 8081);
 | `GetJobQueue(arg0)` | arg0: Integer или String | Integer или Empty | Позиция в очереди (нумерация с 0). Отрицательное число — задание выполнено. Empty — не найдено. |
 | `GetJobLength(arg0)` | arg0: Integer или String | Integer или Empty | «Чистая» продолжительность выполнения в мс без учёта записи результатов. 0 — ещё не выполнено. Empty — не найдено. |
 | `IsJobsComplete(arg0)` | arg0: Integer, String или Array | Boolean | TRUE — задание (или все задания из массива) выполнено. При неверном номере генерирует исключение. |
-| `CancelJob(arg0)` | arg0: Integer или String | Boolean или Empty | TRUE — успешно отменено. Empty — задание не найдено или уже выполнено. |
+| `CancelJob(arg0)` | arg0: Integer или String | Boolean или Empty | TRUE — успешно отменено. Empty — задание не найдено или уже выполнено. Поведение зависит от состояния: при статусе моложе «Выполняется» задание переводится в «Ошибка» с результатом «Выполнение задания отменено»; если поток уже начал выполнение, ядро пытается остановить его через `SetStopExecution(TRUE)` (версия ядра ≥ 46.0) и возвращает TRUE, если поток найден. |
 
 ## Идентификация и поиск
 
@@ -96,7 +96,7 @@ objJob = Object("ServerJob", "192.168.1.100", 8080, 8081);
 | Метод | Аргументы | Возвращает | Описание |
 |-------|-----------|------------|----------|
 | `GetJobResult(arg0)` | arg0: Integer или String | Number/String или Empty | Основной результат (число или строка). Объекты не возвращаются. Empty — не найдено или не выполнено. |
-| `GetJobReturnValue(arg0, arg1)` | arg0: Integer/String, arg1: String | Number/String или Empty | Значение переменной по имени. Только простые типы. Empty — недоступно. |
+| `GetJobReturnValue(arg0, arg1)` | arg0: Integer/String, arg1: String | Number/String или Empty | Значение переменной по имени. Только простые типы. Empty — недоступно. Если объект задания временно недоступен (другой поток читает результат), сервер вместо возврата данных записывает в `m_csResult` строку «Задание временно недоступно. Попробуйте позже» — её возвращает `GetLastError`, а `GetJobReturnValue` вернёт Empty. |
 | `GetJobReturnValue(arg0, arg1, arg2)` | + arg2: Boolean | произвольный тип или Empty | То же с возвратом объектов (массив, мапа, запрос, сериализуемый класс). arg2 по умолчанию FALSE. Вызывать до `Close`. |
 | `GetJobReturnType(arg0, arg1)` | arg0: Integer/String, arg1: String | String или Empty | Тип значения переменной результата. Empty — недоступно. |
 | `EnumJobReturnValues(arg0)` | arg0: Integer или String | Array или Empty | Массив имён переменных с результатами. Вызывать до `Close`. |
@@ -109,7 +109,7 @@ objJob = Object("ServerJob", "192.168.1.100", 8080, 8081);
 |-------|-----------|------------|----------|
 | `GetJobArgValue(arg0, arg1)` | arg0: Integer/String, arg1: Integer (номер арг.) | Number/String или Empty | Значение аргумента вызова по индексу (с 0). Только простые типы. |
 | `GetJobArgValue(arg0, arg1, arg2)` | + arg2: Boolean | произвольный тип или Empty | То же с возвратом объектов. arg2 по умолчанию FALSE. |
-| `GetJobArgType(arg0, arg1)` | arg0: Integer/String, arg1: Integer (номер арг.) | String или Empty | Тип аргумента вызова по индексу. |
+| `GetJobArgType(arg0, arg1)` | arg0: Integer/String, arg1: Integer (номер арг.) | String или Empty | Тип аргумента вызова по индексу. Реестр объявляет 2 параметра, но реализация клиента и сервера читают третий аргумент `returnObjects` (Boolean, по умолчанию FALSE) — фактически метод поддерживает необязательный третий параметр, влияющий только на формат ответа сервера. |
 | `GetJobPropertyValue(arg0, arg1)` | arg0: Integer/String, arg1: String (имя свойства) | произвольный тип или Empty | Значение свойства задания. Empty — свойство неверно. |
 | `GetJobParameters(arg0)` | arg0: Integer или String | String или Empty | Параметры задания в виде строки текста. Empty — не найдено. |
 
@@ -123,7 +123,7 @@ objJob = Object("ServerJob", "192.168.1.100", 8080, 8081);
 | `"TYPE"` | String | Тип задания. |
 | `"COMPUTER"` | String | Компьютер, создавший задание. |
 | `"USER"` | String | Оператор, создавший задание. |
-| `"EXE_DATE_TIME"` | DateTime | Дата и время выполнения. |
+| `"EXE_DATE_TIME"` | DateTime | Дата и время выполнения. Вычисляется приблизительно по `GetTickCount()` на сервере (не хранится как абсолютное время) — может расходиться с реальным временем старта на время работы сервера после перезагрузки системы. Если задание не выполнено, возвращает пустую дату. |
 | `"LIFE_LENGTH"` | Integer | Период хранения после выполнения, в минутах. |
 
 ## Журнал и лимиты
