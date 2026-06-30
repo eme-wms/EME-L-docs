@@ -139,14 +139,6 @@ objRootItems = Object("ItemsOfDispatcher", "LeftRootDocsItems", nFilterOption);
 objRootItems.AttachToIntegrator(IntegratorSRC);
 ```
 
-Передача составных данных в `OnInit()` через `is_format` — полезно, когда обработчик ожидает сразу несколько параметров в одной строке:
-
-```EME-L
-'Во втором аргументе упакованы код фильтра и код запуска'
-objRootItems = Object("ItemsOfDispatcher", "LeftRootDocsItems", is_format("%d %d", nFilterOption, LaunchCode));
-objRootItems.AttachToIntegrator(IntegratorSRC);
-```
-
 Добавление дочернего элемента с привязкой к записи `OrdersBatch` и приоритетом очереди:
 
 ```EME-L
@@ -163,29 +155,19 @@ objItems.AddAndFillItem(r_QueueOrders.GetItemText(), "", r_QueueOrders, r_QueueO
 objItems.SetFirstQueuePriority(dPriority);
 ```
 
-Работа с уже заполненным деревом: получить объект элемента из интегратора и переопределить режим фильтрации на всём текущем уровне:
+Переопределение режима фильтрации для всего уровня дерева — типовой паттерн внутри `OnInit` класса-обработчика (`objItems` передаётся как аргумент):
 
 ```EME-L
-'hItem — дескриптор корневого элемента дерева интегратора'
-hItem = IntegratorSRC.GetRootItem();
-If (hItem != 0)
-    pItemObject AS "ItemsOfDispatcher" = IntegratorSRC.GetItemObject(hItem);
-    If (~is_null(pItemObject) & IsCIItemObject(pItemObject))
-        'ReWriteFilterMode меняет __MOD__ у всех элементов уровня, а не только последнего'
-        pItemObject.ReWriteFilterMode(m_FilterOptionLeft);
-    End If
-End If
-IntegratorSRC.Update();
+'OnInit обработчика вызывается ядром после конструктора ItemsOfDispatcher'
+OnInit(objItems As "ItemsOfDispatcher", FilterOption)
+    'FilterOption — второй аргумент конструктора ItemsOfDispatcher'
+    objItems.ReWriteFilterMode(FilterOption);
+    'ReWriteFilterMode меняет __MOD__ у всех элементов уровня, а не только последнего'
+    m_FilterOption = FilterOption;
+End OnInit
 ```
 
-Проверка типа привязанной записи через `IsCIItemObject()` и `GetImplRecordName()`:
-
-```EME-L
-'IsCIItemObject возвращает TRUE, если объект является элементом диспетчера (CIItemsOfDispatcher)'
-If (IsCIItemObject(pObject) & pObject.GetImplRecordName() == m_strQueueOrdersRec)
-    'pObject — элемент, привязанный к записи «Очередь приказов»'
-End If
-```
+> Помимо описанных методов, в обработчиках часто используются унаследованные от `Items` методы: `FindCategoryProperties`, `GetCategory`, `GetCategoryRef`, `SetCurrentCategory`, `SetCurrentIcon`, `GetItemText` — см. [класс Items](./items.md).
 
 ## См. также
 

@@ -103,11 +103,11 @@ objJson = Object("Json", "{\"name\":\"EME\",\"version\":1}");
 | Метод | Аргументы | Возвращает | Описание |
 |-------|-----------|------------|----------|
 | `PutValue(arg0)` | arg0: String/Integer/Real/Boolean/Empty | Empty | Записывает простое значение в текущий узел. Сбрасывает активную итерацию. |
-| `PutValueAt(arg0, arg1)` | arg0: String/Integer, arg1: простое значение | Empty | Записывает простое значение в дочерний узел по ключу или индексу. |
-| `AddNodeAt(arg0)` | arg0: String | Json (ссылка) | Создаёт новый дочерний узел с заданным ключом в object. Ошибка, если родитель не null/object или ключ уже существует. |
+| `PutValueAt(arg0, arg1)` | arg0: String/Integer, arg1: простое значение | Empty | Записывает простое значение в дочерний узел по ключу или индексу. При записи по ключу в узел типа null тип меняется на object. |
+| `AddNodeAt(arg0)` | arg0: String | Json (ссылка) | Создаёт новый дочерний узел с заданным ключом в object. Если родитель типа null, его тип меняется на object. Ошибка, если родитель не null/object или ключ уже существует. |
 | `ResizeArray(arg0)` | arg0: Integer | Empty | Изменяет размер массива. Если узел типа null — становится array. |
-| `PushBackValue(arg0)` | arg0: простое значение | Empty | Добавляет простое значение в конец массива. |
-| `PushBackNode()` | — | Json (ссылка) | Добавляет пустой узел в конец массива. |
+| `PushBackValue(arg0)` | arg0: простое значение | Empty | Добавляет простое значение в конец массива. Если узел типа null — становится array. |
+| `PushBackNode()` | — | Json (ссылка) | Добавляет пустой узел в конец массива. Если узел типа null — становится array. |
 
 ## Итерация
 
@@ -168,23 +168,38 @@ objJson = Object("Json", "{\"name\":\"EME\",\"version\":1}");
 
 ## Примеры
 
-Создание JSON-объекта и запись значений:
+Парсинг JSON и чтение значения по ключу со значением по умолчанию (шаблон из ERPFirmPolyus):
 
 ```EME-L
-'Создать объект и заполнить поля'
+'Создать объект и распарсить строку параметров'
 objJson = Object("Json");
-objJson.ResizeArray(0);
-objJson.PutValueAt("name", "EME-L");
-objJson.PutValueAt("version", 4);
-Str = objJson.DumpToStrFormatted();
+objJson.Parse(ParamsStr);
+If (objJson.GetValueAt("iblnr") == iblnrId)
+    bFound = True;
+End If
 ```
 
-Чтение значения по ключу со значением по умолчанию:
+Построение JSON-запроса с нуля (шаблон из HardwareOrdersDikomCrane):
 
 ```EME-L
-objJson = Object("Json", "{\"port\":8080}");
-Port = objJson.GetValueAtOrDefault("port", 0);
-Host = objJson.GetValueAtOrDefault("host", "localhost");
+'Создать объект и заполнить поля команды'
+JSON = Object("Json");
+JSON.PutValueAt("operation", Command);
+JSON.PutValueAt("cellId", StorageId);
+JSON.PutValueAt("barcode", ContainerBarcode);
+RequestText = JSON.DumpToStr();
+```
+
+Чтение ответа от внешнего API со значениями по умолчанию (шаблон из HardwareOrdersDikomCrane):
+
+```EME-L
+'JSONAnswer получен от HTTP-запроса'
+If (JSONAnswer.IsNullType())
+    ErrorString = "Ошибка обработки запроса";
+Else
+    JobStatus = JSONAnswer.GetValueAtOrDefault("status", 2);
+    ErrorCode = JSONAnswer.GetValueAtOrDefault("errorCode", 0);
+End If
 ```
 
 Обход объекта с помощью итератора:
